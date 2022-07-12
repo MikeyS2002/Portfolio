@@ -59,6 +59,12 @@ const skillsData = [
     color: "",
     title: "Three.JS",
   },
+  {
+    id: 9,
+    logo: "SiGreensock",
+    color: "#88CE02",
+    title: "GSAP",
+  },
 ];
 
 export default skillsData;

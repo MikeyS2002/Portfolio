@@ -34,12 +34,12 @@ export default function Header({ loading }) {
       className="h-screen bg-black relative scale-y-[1.01] snap-start"
       id="header"
     >
-      <div className="absolute bottom-[23%] left-[15%] z-10">
+      <div className="absolute bottom-[21%] md:bottom-[23%] left-[15%] z-10">
         <motion.div style={{ y: y2 }} className="overflow-hidden">
           <motion.h1
             animate={loading ? "closed" : "open"}
             variants={textVariants}
-            className="leading-[110px] text-white"
+            className="mb-2 leading-none text-white"
           >
             Mike
           </motion.h1>
@@ -48,7 +48,7 @@ export default function Header({ loading }) {
           <motion.h1
             animate={loading ? "closed" : "open"}
             variants={textVariants}
-            className="leading-[110px] text-white"
+            className="mb-4 leading-none text-white"
           >
             Schaper
           </motion.h1>
@@ -66,14 +66,29 @@ export default function Header({ loading }) {
       <motion.div
         animate={loading ? "closed" : "open"}
         variants={opacityVariants}
-        className="absolute top-0 left-0 z-0 w-full h-full pointer-events-none"
+        className="absolute top-0 left-0 z-0 hidden w-full h-full pointer-events-none md:block"
       >
         <Image
+          priority
           src="/images/wormhole.svg"
           alt=""
           layout="fill"
           objectFit="cover"
           objectPosition="left bottom"
+        />
+      </motion.div>
+      <motion.div
+        animate={loading ? "closed" : "open"}
+        variants={opacityVariants}
+        className="absolute top-0 left-0 z-0 block w-full h-full pointer-events-none md:hidden"
+      >
+        <Image
+          priority
+          src="/images/wormhole.svg"
+          alt=""
+          layout="fill"
+          objectFit="cover"
+          objectPosition="left -100px bottom 0"
         />
       </motion.div>
     </header>

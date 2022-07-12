@@ -23,7 +23,7 @@ const Work = () => {
   }, []);
 
   return (
-    <section className="w-full mt-40 mb-20" id="work">
+    <section className="w-full mt-20 mb-10 md:mt-40 md:mb-20" id="work">
       <h2 className="mb-10 text-center">Work</h2>
       <Swiper
         ref={ref}
@@ -31,13 +31,13 @@ const Work = () => {
         loop={true}
         centeredSlides={true}
       >
-        {workData.map((slide) => {
+        {workData.map((slide, i) => {
           return (
-            <SwiperSlide key={slide.id}>
+            <SwiperSlide key={i}>
               <Link href="/work">
                 <div className="relative w-full h-full group">
                   <Image
-                    src="/images/react-music-player.jpg"
+                    src={slide.img}
                     alt=""
                     layout="fill"
                     objectFit="cover"
@@ -46,10 +46,11 @@ const Work = () => {
                     0{slide.id} / {slide.title}
                   </p>
                   <div className="absolute z-30 flex gap-5 bottom-5 left-5">
-                    {slide.skills.map((skill) => (
+                    {slide.skills.map((skill, i) => (
                       <p
-                        key={skill.id}
-                        className={`px-4 py-2 transition-opacity duration-300 bg-[${skill.color}] rounded-full opacity-0 glass group-hover:opacity-100 bg-opacity-20`}
+                        key={i}
+                        style={{ backgroundColor: skill.color }}
+                        className="hidden px-4 py-2 transition-opacity duration-300 rounded-full opacity-0 md:block glass group-hover:opacity-100 bg-opacity-20"
                       >
                         {skill.title}
                       </p>

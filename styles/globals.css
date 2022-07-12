@@ -1,3 +1,6 @@
+body {
+  overflow-x: hidden;
+}
 .font-poppins {
   font-family: "Poppins", sans-serif;
 }
@@ -30,19 +33,43 @@
 .swiper-slide-active {
   height: 100% !important;
 }
+@media only screen and (max-width: 768px) {
+  .swiper {
+    height: 15rem;
+  }
+  .swiper-slide {
+    width: 80% !important;
+    margin: 0 2%;
+  }
+}
+
+.inputBox input:valid ~ span,
+.inputBox input:not(:placeholder-shown) ~ span,
+.inputBox input:focus ~ span {
+  font-size: 12px;
+  top: -10px;
+  left: 0;
+}
+.inputBox textarea:valid ~ span,
+.inputBox textarea:focus ~ span {
+  font-size: 12px;
+  top: -19px;
+  left: 0;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body {
-    @apply overflow-x-hidden text-black bg-white font-poppins dark:bg-black dark:text-white;
+    @apply text-black bg-white font-poppins dark:bg-black dark:text-white;
   }
   h1 {
-    @apply font-libre leading-tight text-[96px];
+    @apply font-libre leading-none md:text-[96px] text-[68px];
   }
   h2 {
-    @apply font-libre leading-none text-[96px];
+    @apply font-libre leading-none md:text-[96px] text-[68px];
   }
   h3 {
     @apply font-libre leading-none text-[24px] italic;

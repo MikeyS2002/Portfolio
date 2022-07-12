@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { SiGithub } from "react-icons/si";
-import { FaLinkedinIn } from "react-icons/fa";
+import { motion } from "framer-motion";
 
-const Footer = () => {
+export default function Footer() {
   const [clock, setClock] = useState();
 
   useEffect(() => {
@@ -17,27 +16,30 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="border-t  border-[#A5A5A5] px-20 py-10 ">
-      <div className="page-width">
+    <footer className="border-t  border-[#A5A5A5] px-5 md:px-20 py-10 ">
+      <div className="flex flex-col justify-between gap-5 page-width md:flex-row">
         <ul>
-          <li>Mike Schaper</li>
-          <li>Amserdam, Netherlands</li>
-          <li>CEST {clock}</li>
+          <li>
+            <h3>Mike Schaper</h3>
+          </li>
+          <li>
+            <p>Amserdam, Netherlands</p>
+          </li>
+          <li>
+            <p>CEST {clock}</p>
+          </li>
+          <li>
+            <p>+31 624 4312 74</p>
+          </li>
         </ul>
         <ul className="flex gap-5">
           <li>
             <div className="flex items-center gap-1 ">
-              <div className="w-6 h-6 bg-white rounded-sm">
-                <SiGithub className="w-full h-full p-[2px] text-[#171515]" />
-              </div>
               <p>Github</p>
             </div>
           </li>
           <li>
             <div className="flex items-center gap-1 ">
-              <div className="w-6 h-6 bg-[#0A66C2] rounded-sm">
-                <FaLinkedinIn className="w-full h-full p-[4px]" />
-              </div>
               <p>LinkedIn</p>
             </div>
           </li>
@@ -45,6 +47,4 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

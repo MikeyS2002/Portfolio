@@ -13,6 +13,7 @@ import {
   SiGraphql,
   SiShopify,
   SiThreedotjs,
+  SiGreensock,
 } from "react-icons/si";
 
 const Icon = ({ iconName, iconClass }) => {
@@ -38,6 +39,8 @@ const Icon = ({ iconName, iconClass }) => {
     return <SiShopify className={iconClass} />;
   } else if (iconName === "SiThreedotjs") {
     return <SiThreedotjs className={`${iconClass} text-black`} />;
+  } else if (iconName === "SiGreensock") {
+    return <SiGreensock className={`${iconClass}`} />;
   } else {
     return;
   }

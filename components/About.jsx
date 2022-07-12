@@ -37,7 +37,7 @@ const About = () => {
   useEffect(() => {
     for (var i = 0; i < skillsData.length; i++) {
       top.push(Math.floor(Math.random() * (90 - 1 + 1) + 1));
-      left.push(Math.floor(Math.random() * (85 - 1 + 1) + 1));
+      left.push(Math.floor(Math.random() * (80 - 1 + 1) + 1));
     }
     setTopPos(top);
     setLeftPos(left);
@@ -72,10 +72,10 @@ const About = () => {
   }, [about]);
 
   return (
-    <section className="px-20 py-20 page-width" id="about">
+    <section className="px-5 py-10 md:py-20 md:px-20 page-width" id="about">
       <h2 className="mb-10 text-center">About</h2>
-      <div className="flex gap-20">
-        <div className="flex flex-col justify-center space-y-4">
+      <div className="flex flex-col gap-10 md:gap-20 md:flex-row">
+        <div className="flex flex-row flex-wrap justify-between md:justify-center md:space-y-4 md:flex-col">
           <p onClick={() => setAbout("aboutMe")} className="cursor-pointer">
             About me
           </p>
@@ -89,7 +89,7 @@ const About = () => {
             Skills
           </p>
         </div>
-        <div className="w-px bg-[#A5A5A5] h-[232px]"></div>
+        <div className="w-px md:block hidden bg-[#A5A5A5] h-[232px]"></div>
         <div className="relative w-full col-span-2 my-auto">
           {about === "aboutMe" && (
             <>
@@ -105,7 +105,7 @@ const About = () => {
               </p>
               <motion.div
                 style={{ y: y1 }}
-                className="absolute top-0 right-0 w-[150px] h-[200px] -z-10"
+                className="absolute top-0 right-0 w-[150px] h-[200px] -z-10 hidden md:block"
               >
                 <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
                 <div className="relative z-0 w-full h-full rounded oveflow-hidden ">
@@ -119,7 +119,7 @@ const About = () => {
               </motion.div>
               <motion.div
                 style={{ y: y2 }}
-                className="absolute -bottom-[120px] right-[60%] -z-10  w-[180px] h-[130px]"
+                className="absolute -bottom-[120px] right-[60%] -z-10  w-[180px] h-[130px] hidden md:block"
               >
                 <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
                 <div className="relative z-0 w-full h-full rounded oveflow-hidden">
@@ -133,7 +133,7 @@ const About = () => {
               </motion.div>
               <motion.div
                 style={{ y: y3 }}
-                className="absolute -bottom-[80px] right-[55%] -z-10 w-[100px] h-[160px]"
+                className="absolute -bottom-[80px] right-[55%] -z-10 w-[100px] h-[160px] hidden md:block"
               >
                 <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
                 <div className="relative z-0 w-full h-full rounded oveflow-hidden ">
@@ -167,7 +167,7 @@ const About = () => {
               </div>
               <motion.div
                 style={{ y: y1 }}
-                className="absolute -bottom-[100px] right-[45%] -z-10  w-[230px] h-[140px]"
+                className="absolute hidden md:block -bottom-[100px] right-[45%] -z-10  w-[230px] h-[140px]"
               >
                 <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
                 <div className="relative z-0 w-full h-full rounded oveflow-hidden">
@@ -206,7 +206,7 @@ const About = () => {
               </div>
               <motion.div
                 style={{ y: y2 }}
-                className="absolute top-[30px] right-[10%] -z-10  w-[200px] h-[110px]"
+                className="absolute top-[30px] hidden md:block right-[10%] -z-10  w-[200px] h-[110px]"
               >
                 <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
                 <div className="relative z-0 w-full h-full rounded oveflow-hidden">
@@ -220,7 +220,7 @@ const About = () => {
               </motion.div>
               <motion.div
                 style={{ y: y1 }}
-                className="absolute -bottom-[80px] left-[35%] -z-10  w-[230px] h-[140px]"
+                className="absolute -bottom-[80px] hidden md:block left-[35%] -z-10  w-[230px] h-[140px]"
               >
                 <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
                 <div className="relative z-0 w-full h-full rounded oveflow-hidden">
@@ -261,7 +261,8 @@ const About = () => {
                   className="absolute flex items-center gap-1 cursor-grab"
                 >
                   <div
-                    className={`bg-white bg-[${skill.color}] w-6 h-6 rounded-sm`}
+                    style={{ backgroundColor: skill.color }}
+                    className={`bg-white w-6 h-6 rounded-sm`}
                   >
                     <Icon
                       iconClass="w-full h-full p-[2px]"
