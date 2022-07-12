@@ -32,7 +32,7 @@ const skillsData = [
   {
     id: 6,
     logo: "SiNextdotjs",
-    color: "",
+    color: "white",
     title: "Next",
   },
   {
@@ -56,7 +56,7 @@ const skillsData = [
   {
     id: 9,
     logo: "SiThreedotjs",
-    color: "",
+    color: "white",
     title: "Three.JS",
   },
   {

@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { OffsetContext } from "../contexts/OffsetContext";
 import workData from "../data/workData";
+import Icon from "./Icon";
 
 const Work = () => {
   const ref = useRef();
@@ -46,14 +47,19 @@ const Work = () => {
                     0{slide.id} / {slide.title}
                   </p>
                   <div className="absolute z-30 flex gap-5 bottom-5 left-5">
-                    {slide.skills.map((skill, i) => (
-                      <p
-                        key={i}
-                        style={{ backgroundColor: skill.color }}
-                        className="hidden px-4 py-2 transition-opacity duration-300 rounded-full opacity-0 md:block glass group-hover:opacity-100 bg-opacity-20"
-                      >
-                        {skill.title}
-                      </p>
+                    {slide.skills.map((skill) => (
+                      <div className="flex items-center gap-1">
+                        <div
+                          style={{ backgroundColor: skill.color }}
+                          className={`bg-white w-6 h-6 rounded-sm`}
+                        >
+                          <Icon
+                            iconClass="w-full h-full p-[2px]"
+                            iconName={skill.logo}
+                          />
+                        </div>
+                        <p>{skill.title}</p>
+                      </div>
                     ))}
                   </div>
                 </div>

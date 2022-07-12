@@ -7,12 +7,14 @@ const workData = [
     img: "/images/react-music-player.jpg",
     skills: [
       {
-        title: "React",
+        logo: "FaReact",
         color: "#61DBFB",
+        title: "React",
       },
       {
-        title: "scss",
-        color: "#CD6799",
+        logo: "FaReact",
+        color: "#61DBFB",
+        title: "React",
       },
     ],
   },
@@ -24,12 +26,14 @@ const workData = [
     img: "/images/react-music-player.jpg",
     skills: [
       {
-        title: "React",
+        logo: "FaReact",
         color: "#61DBFB",
+        title: "React",
       },
       {
-        title: "scss",
+        logo: "IoLogoSass",
         color: "#CD6799",
+        title: "SASS",
       },
     ],
   },
@@ -41,12 +45,14 @@ const workData = [
     img: "/images/react-music-player.jpg",
     skills: [
       {
-        title: "React",
+        logo: "FaReact",
         color: "#61DBFB",
+        title: "React",
       },
       {
-        title: "scss",
-        color: "#CD6799",
+        logo: "FaReact",
+        color: "#61DBFB",
+        title: "React",
       },
     ],
   },
@@ -58,12 +64,14 @@ const workData = [
     img: "/images/react-music-player.jpg",
     skills: [
       {
-        title: "React",
-        color: "#61DBFB",
+        logo: "SiNextdotjs",
+        color: "white",
+        title: "Next",
       },
       {
-        title: "scss",
-        color: "#CD6799",
+        logo: "FaReact",
+        color: "#61DBFB",
+        title: "React",
       },
     ],
   },
@@ -75,12 +83,14 @@ const workData = [
     img: "/images/react-music-player.jpg",
     skills: [
       {
-        title: "React",
+        logo: "FaReact",
         color: "#61DBFB",
+        title: "React",
       },
       {
-        title: "scss",
-        color: "#CD6799",
+        logo: "SiNextdotjs",
+        color: "white",
+        title: "Next",
       },
     ],
   },
