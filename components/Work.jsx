@@ -36,7 +36,7 @@ const Work = () => {
           return (
             <SwiperSlide key={i}>
               <Link href="/work">
-                <div className="relative w-full h-full group">
+                <div className="relative w-full h-full group link">
                   <Image
                     src={slide.img}
                     alt=""

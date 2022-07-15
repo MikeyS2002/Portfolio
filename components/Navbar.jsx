@@ -78,7 +78,7 @@ export default function Navbar() {
             duration={500}
             onSetActive={handleSetActiveHome}
           >
-            <p className="cursor-pointer">Home</p>
+            <p className="">Home</p>
           </ScrollLink>
           <ScrollLink
             to="work"
@@ -88,7 +88,7 @@ export default function Navbar() {
             offset={-100}
             onSetActive={handleSetActiveWork}
           >
-            <p className="cursor-pointer">Work</p>
+            <p className="">Work</p>
           </ScrollLink>
           <ScrollLink
             to="about"
@@ -98,7 +98,7 @@ export default function Navbar() {
             offset={-20}
             onSetActive={handleSetActiveAbout}
           >
-            <p className="cursor-pointer">About</p>
+            <p className="">About</p>
           </ScrollLink>
         </>
       </motion.div>
@@ -108,7 +108,7 @@ export default function Navbar() {
           variants={navVariants}
           animate={homepage === "/" ? "hidden" : "shown"}
           initial={{ opacity: 0 }}
-          className="fixed z-30 flex gap-20 p-4 bg-white rounded-full cursor-pointer group left-10 top-10 glass bg-opacity-5"
+          className="fixed z-30 flex gap-20 p-4 bg-white rounded-full link group left-10 top-10 glass bg-opacity-5"
         >
           <AiOutlineArrowLeft className="transition-transform group-hover:scale-[1.1]" />
           <svg

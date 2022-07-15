@@ -46,7 +46,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t  border-[#A5A5A5] px-5 md:px-20 py-10 ">
-      <div className="flex flex-col justify-between gap-5 page-width md:flex-row">
+      <div className="flex flex-col justify-between gap-10 page-width md:flex-row">
         <div className="flex flex-col justify-between">
           <ul>
             <li>
@@ -62,7 +62,7 @@ export default function Footer() {
               <p>+31 624 4312 74</p>
             </li>
           </ul>
-          <ul className="flex gap-5">
+          <ul className="hidden gap-5 md:flex">
             <li className="cursor-pointer">
               <a>Github</a>
             </li>
@@ -71,9 +71,11 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-
         <ul className="">
-          <li className="w-[300px]">
+          <li className="justify-end mb-4 md:mb-0 md:flex">
+            <h5>Github contributions last 20 weeks:</h5>
+          </li>
+          <li className="md:w-[400px] md:translate-x-0 md:scale-100 -translate-x-6 scale-110 md:translate-y-3">
             <ResponsiveContainer width="100%" height={150}>
               <AreaChart data={data}>
                 <Area
@@ -92,6 +94,14 @@ export default function Footer() {
                 <CartesianGrid opacity={0.2} vertical={false} />
               </AreaChart>
             </ResponsiveContainer>
+          </li>
+        </ul>
+        <ul className="flex gap-5 md:hidden">
+          <li className="cursor-pointer">
+            <a>Github</a>
+          </li>
+          <li className="cursor-pointer">
+            <a>LinkedIn</a>
           </li>
         </ul>
       </div>

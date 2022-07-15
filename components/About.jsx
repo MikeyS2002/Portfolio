@@ -76,16 +76,16 @@ const About = () => {
       <h2 className="mb-10 text-center">About</h2>
       <div className="flex flex-col gap-10 md:gap-20 md:flex-row">
         <div className="flex flex-row flex-wrap justify-between md:justify-center md:space-y-4 md:flex-col">
-          <p onClick={() => setAbout("aboutMe")} className="cursor-pointer">
+          <p onClick={() => setAbout("aboutMe")} className="link w-fit">
             About me
           </p>
-          <p onClick={() => setAbout("experience")} className="cursor-pointer">
+          <p onClick={() => setAbout("experience")} className="link w-fit">
             Experience
           </p>
-          <p onClick={() => setAbout("education")} className="cursor-pointer">
+          <p onClick={() => setAbout("education")} className="link w-fit">
             Education
           </p>
-          <p onClick={() => setAbout("skills")} className="cursor-pointer">
+          <p onClick={() => setAbout("skills")} className="link w-fit">
             Skills
           </p>
         </div>
@@ -114,6 +114,8 @@ const About = () => {
                     alt=""
                     layout="fill"
                     objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL="/images/mikeschaper.jpg"
                   />
                 </div>
               </motion.div>
@@ -128,6 +130,8 @@ const About = () => {
                     alt=""
                     layout="fill"
                     objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL="/images/callie.png"
                   />
                 </div>
               </motion.div>
@@ -143,6 +147,8 @@ const About = () => {
                     layout="fill"
                     objectFit="cover"
                     className="z-10"
+                    placeholder="blur"
+                    blurDataURL="/images/callie2.jpg"
                   />
                 </div>
               </motion.div>
@@ -176,6 +182,8 @@ const About = () => {
                     alt=""
                     layout="fill"
                     objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL="/images/flatline.jpg"
                   />
                 </div>
               </motion.div>
@@ -215,6 +223,8 @@ const About = () => {
                     alt=""
                     layout="fill"
                     objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL="/images/hva.jpeg"
                   />
                 </div>
               </motion.div>
@@ -229,6 +239,8 @@ const About = () => {
                     alt=""
                     layout="fill"
                     objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL="/images/hva.jpeg"
                   />
                 </div>
               </motion.div>
@@ -258,11 +270,11 @@ const About = () => {
                     right: rightOffs[i],
                     bottom: bottomOffs[i],
                   }}
-                  className="absolute flex items-center gap-1 cursor-grab"
+                  className="absolute flex items-center gap-1 link"
                 >
                   <div
                     style={{ backgroundColor: skill.color }}
-                    className={`bg-white w-6 h-6 rounded-sm`}
+                    className="w-6 h-6 bg-white rounded-sm "
                   >
                     <Icon
                       iconClass="w-full h-full p-[2px]"

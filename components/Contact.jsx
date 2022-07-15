@@ -40,7 +40,7 @@ const Contact = () => {
       <div className="absolute top-0 -right-[20px] h-full w-[20px] bg-white"></div>
       <div
         onClick={openContactHandler}
-        className="absolute flex items-center gap-2 px-2 py-1 rotate-90 bg-white rounded-b cursor-pointer top-1/2 -left-20"
+        className="absolute flex items-center gap-2 px-2 py-1 rotate-90 bg-white rounded-b cursor-pointer top-1/2 -left-20 link"
       >
         <div className="flex flex-col justify-between w-3 h-[6px]">
           <div
@@ -58,7 +58,7 @@ const Contact = () => {
       </div>
       <div className="flex items-center justify-between mb-10">
         <h3>Contact me!</h3>
-        <div onClick={openContactHandler} className="block p-1 sm:hidden">
+        <div onClick={openContactHandler} className="block p-1 sm:hidden link">
           <IoCloseOutline className=" text-[20px] " />
         </div>
       </div>
