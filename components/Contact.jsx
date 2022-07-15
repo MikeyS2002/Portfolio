@@ -19,14 +19,14 @@ const Contact = () => {
       x: "100%",
       transition: {
         duration: 0.5,
-        ease: "easeIn",
+        type: "spring",
       },
     },
     hidden: {
       x: 0,
       transition: {
         duration: 0.5,
-        ease: "easeIn",
+        type: "spring",
       },
     },
   };
@@ -37,6 +37,7 @@ const Contact = () => {
       variants={contactVariants}
       className="fixed top-0 right-0 z-40 text-black bg-white h-screen sm:w-[400px] w-full p-10 sm:py-20 sm:px-10 "
     >
+      <div className="absolute top-0 -right-[20px] h-full w-[20px] bg-white"></div>
       <div
         onClick={openContactHandler}
         className="absolute flex items-center gap-2 px-2 py-1 rotate-90 bg-white rounded-b cursor-pointer top-1/2 -left-20"
@@ -61,7 +62,7 @@ const Contact = () => {
           <IoCloseOutline className=" text-[20px] " />
         </div>
       </div>
-      <form autocomplete="off">
+      <form autoComplete="off">
         <div className="relative mb-7 inputBox">
           <input
             className="w-full px-4 py-2 border rounded focus:outline-none active:outline-none"

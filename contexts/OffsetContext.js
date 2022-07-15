@@ -4,11 +4,15 @@ const OffsetContext = createContext();
 
 const OffsetProvider = ({ children }) => {
   const [offset, setOffset] = useState(0);
+  const [contributionsState, setContributionsState] = useState([]);
+
   return (
     <OffsetContext.Provider
       value={{
         offset,
         setOffset,
+        contributionsState,
+        setContributionsState,
       }}
     >
       {children}

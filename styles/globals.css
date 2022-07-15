@@ -56,20 +56,6 @@ body {
   top: -19px;
   left: 0;
 }
-::-webkit-scrollbar {
-  width: 0.3em;
-  border-left: 1px solid #a5a5a5;
-}
-
-::-webkit-scrollbar-track {
-  border-radius: 100vh;
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: white;
-  border-radius: 4px;
-}
 
 @tailwind base;
 @tailwind components;
@@ -90,6 +76,9 @@ body {
   }
   h4 {
     @apply text-[#434343];
+  }
+  h5 {
+    @apply font-libre text-[18px] leading-none;
   }
   p {
     @apply font-poppins;

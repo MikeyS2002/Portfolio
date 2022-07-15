@@ -1,13 +1,34 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import Head from "next/head";
+import {
+  ApolloClient,
+  createHttpLink,
+  InMemoryCache,
+  gql,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 
 import Header from "../components/Header";
 import Loading from "../components/Loading";
 import Navbar from "../components/Navbar";
 import Work from "../components/Work";
 import About from "../components/About";
+import { OffsetContext } from "../contexts/OffsetContext";
 
-export default function Home({ loading }) {
+export default function Home({ loading, contributions }) {
+  const { setContributionsState } = useContext(OffsetContext);
+  const contributionsArr = [];
+
+  contributions.weeks.forEach((element, i) => {
+    const sum = element.contributionDays.reduce((accumulator, object) => {
+      return accumulator + object.contributionCount;
+    }, 0);
+    contributionsArr.push(sum);
+  });
+  useEffect(() => {
+    setContributionsState(contributionsArr);
+  }, []);
+
   return (
     <div className="relative">
       <Head>
@@ -24,4 +45,51 @@ export default function Home({ loading }) {
       </>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const httpLink = createHttpLink({
+    uri: "https://api.github.com/graphql",
+  });
+
+  const authLink = setContext((_, { headers }) => {
+    return {
+      headers: {
+        ...headers,
+        authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`,
+      },
+    };
+  });
+
+  const client = new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache(),
+  });
+
+  const { data } = await client.query({
+    query: gql`
+      {
+        user(login: "MikeyS2002") {
+          contributionsCollection {
+            contributionCalendar {
+              weeks {
+                contributionDays {
+                  contributionCount
+                }
+              }
+            }
+          }
+        }
+      }
+    `,
+  });
+
+  const { user } = data;
+  const contributions = user.contributionsCollection.contributionCalendar;
+
+  return {
+    props: {
+      contributions,
+    },
+  };
 }

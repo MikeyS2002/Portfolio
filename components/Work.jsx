@@ -47,8 +47,8 @@ const Work = () => {
                     0{slide.id} / {slide.title}
                   </p>
                   <div className="absolute z-30 flex gap-5 bottom-5 left-5">
-                    {slide.skills.map((skill) => (
-                      <div className="flex items-center gap-1">
+                    {slide.skills.map((skill, i) => (
+                      <div className="flex items-center gap-1" key={i}>
                         <div
                           style={{ backgroundColor: skill.color }}
                           className={`bg-white w-6 h-6 rounded-sm`}
