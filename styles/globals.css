@@ -87,7 +87,7 @@ body {
 
 @layer base {
   body {
-    @apply text-black bg-white font-poppins dark:bg-black dark:text-white;
+    @apply text-white bg-black font-poppins;
   }
   h1 {
     @apply font-libre leading-none md:text-[96px] text-[68px];
