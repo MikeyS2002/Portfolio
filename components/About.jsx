@@ -49,7 +49,7 @@ const About = () => {
   useEffect(() => {
     for (var i = 0; i < skillsData.length; i++) {
       top.push(Math.floor(Math.random() * (90 - 1 + 1) + 1));
-      left.push(Math.floor(Math.random() * (80 - 1 + 1) + 1));
+      left.push(Math.floor(Math.random() * (70 - 1 + 1) + 1));
     }
     setTopPos(top);
     setLeftPos(left);
@@ -128,7 +128,7 @@ const About = () => {
         visible: { opacity: 1, y: 0 },
         hidden: { opacity: 0, y: 100 },
       }}
-      className="px-5 py-10 md:py-20 md:px-20 page-width"
+      className="px-2 py-10 sm:px-5 md:py-20 md:px-20 page-width"
       id="about"
     >
       <h2 className="mb-10 text-center">About</h2>
@@ -150,13 +150,13 @@ const About = () => {
           <div
             className={`${
               about === "aboutMe"
-                ? "left-0 w-[77px]"
+                ? "left-0 w-[70px]"
                 : about === "experience"
-                ? "left-[29%] w-[86px]"
+                ? "left-[30%] w-[75px]"
                 : about === "education"
-                ? "left-[60%]  w-[80px]"
+                ? "left-[61.5%]  w-[70px]"
                 : about === "skills"
-                ? "left-[89%] w-[38px] "
+                ? "left-[92%] w-[30px] "
                 : ""
             } absolute h-[2px] bg-white transition-all left-0 duration-300 top-[90%] md:hidden block`}
           ></div>
@@ -198,7 +198,7 @@ const About = () => {
           </p>
         </div>
         <div className="w-px md:block hidden bg-[#A5A5A5] h-[232px]"></div>
-        <div className="relative w-full col-span-2 my-auto">
+        <div className="relative w-full col-span-2 my-auto sm:min-h-auto min-h-[270px]">
           {about === "aboutMe" && (
             <>
               <p>

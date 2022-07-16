@@ -93,13 +93,13 @@ body {
     @apply font-libre leading-none md:text-[96px] text-[68px];
   }
   h2 {
-    @apply font-libre leading-none md:text-[96px] text-[56px];
+    @apply font-libre leading-none md:text-[96px] text-[40px] sm:text-[56px];
   }
   h3 {
-    @apply font-libre leading-none text-[24px] italic;
+    @apply font-libre leading-none text-[20px] md:text-[24px]  italic;
   }
   h4 {
-    @apply text-[#434343];
+    @apply text-[#434343] sm:text-[16px] text-[14px] leading-tight;
   }
   h5 {
     @apply font-libre text-[18px] leading-none;
@@ -108,7 +108,7 @@ body {
     @apply font-libre leading-none text-[32px] md:text-[40px] italic;
   }
   p {
-    @apply font-poppins;
+    @apply font-poppins sm:text-[16px] text-[14px];
   }
   .link {
     @apply cursor-pointer;

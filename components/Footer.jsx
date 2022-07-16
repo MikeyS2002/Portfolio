@@ -45,7 +45,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="border-t  border-[#A5A5A5] px-5 md:px-20 py-10 ">
+    <footer className="border-t  border-[#A5A5A5] px-2 sm:px-5 md:px-20 py-10 ">
       <div className="flex flex-col justify-between gap-10 page-width md:flex-row">
         <div className="flex flex-col justify-between">
           <ul>
@@ -105,10 +105,14 @@ export default function Footer() {
                 visible: { opacity: 1, y: 0 },
                 hidden: { opacity: 0, y: 10 },
               }}
-              className="md:w-[400px] h-[150px] md:translate-x-0 md:scale-100 -translate-x-6 scale-110 md:translate-y-3"
+              className="md:w-[400px] h-[150px]  md:translate-y-3"
             >
               {inView && (
-                <ResponsiveContainer width="100%" height={150}>
+                <ResponsiveContainer
+                  width="100%"
+                  height={150}
+                  className="scale-110 -translate-x-6 md:translate-x-0 md:scale-100"
+                >
                   <AreaChart data={data}>
                     <Area
                       dataKey="contributions"
@@ -143,10 +147,22 @@ export default function Footer() {
           className="flex gap-5 md:hidden"
         >
           <li className="cursor-pointer">
-            <a>Github</a>
+            <a
+              href="https://github.com/MikeyS2002"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Github
+            </a>
           </li>
           <li className="cursor-pointer">
-            <a>LinkedIn</a>
+            <a
+              href="https://www.linkedin.com/in/mike-schaper-906748212/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn
+            </a>
           </li>
         </motion.ul>
       </div>

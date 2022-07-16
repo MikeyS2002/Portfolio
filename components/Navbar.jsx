@@ -57,17 +57,17 @@ export default function Navbar() {
         variants={navVariants}
         animate={homepage === "/" ? "shown" : "hidden"}
         initial={{ opacity: 0 }}
-        className="fixed z-30 flex gap-20 px-8 py-4 -translate-x-1/2 bg-white rounded left-1/2 md:top-10 top-5 glass bg-opacity-5"
+        className="fixed z-30 flex gap-10 px-8 py-4 -translate-x-1/2 bg-white rounded sm:gap-20 left-1/2 md:top-10 top-5 glass bg-opacity-5"
       >
         <>
           <div
             className={`${
               underline === "home"
-                ? "left-[15.5%] w-[47px]"
+                ? "left-[20%] sm:left-[15.5%] w-[47px]"
                 : underline === "work"
                 ? "left-[50%] w-[40px]"
                 : underline === "about"
-                ? "left-[84.5%] w-[50px]"
+                ? "left-[80%] sm:left-[84.5%] w-[50px]"
                 : ""
             }  absolute bottom-[14px] h-[2px]  bg-white transition-all duration-300 -translate-x-1/2`}
           ></div>

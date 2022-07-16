@@ -34,7 +34,7 @@ export default function Header({ loading }) {
       className="h-screen bg-black relative scale-y-[1.01] snap-start"
       id="header"
     >
-      <div className="absolute bottom-[21%] md:bottom-[23%] left-[15%] z-10">
+      <div className="absolute bottom-[21%] md:bottom-[23%] left-5 sm:left-[15%] z-10">
         <motion.div style={{ y: y2 }} className="overflow-hidden">
           <motion.h1
             animate={loading ? "closed" : "open"}
