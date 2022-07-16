@@ -172,8 +172,8 @@ const Details = ({ project }) => {
             <p className="mt-5">{typeProject}</p>
             <p className="mt-5">Skills:</p>
             <ul className="ml-4 list-disc">
-              {skills.map((skill) => (
-                <li>{skill.title}</li>
+              {skills.map((skill, i) => (
+                <li key={i}>{skill.title}</li>
               ))}
             </ul>
           </div>
@@ -189,8 +189,8 @@ const Details = ({ project }) => {
           navigation={true}
           className="mt-10"
         >
-          {slider.map((slide) => (
-            <SwiperSlide>
+          {slider.map((slide, i) => (
+            <SwiperSlide key={i}>
               <div className="relative w-full h-full">
                 <Image
                   src={slide.url}
