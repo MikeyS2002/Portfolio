@@ -147,16 +147,40 @@ const About = () => {
                 : ""
             } absolute h-[2px] bg-white transition-all left-0 duration-300`}
           ></div>
-          <p onClick={() => setAbout("aboutMe")} className="link w-fit">
+          <p
+            onClick={() => {
+              setAbout("aboutMe");
+              setActiveAbout(1);
+            }}
+            className="link w-fit"
+          >
             About me
           </p>
-          <p onClick={() => setAbout("experience")} className="link w-fit">
+          <p
+            onClick={() => {
+              setAbout("experience");
+              setActiveAbout(2);
+            }}
+            className="link w-fit"
+          >
             Experience
           </p>
-          <p onClick={() => setAbout("education")} className="link w-fit">
+          <p
+            onClick={() => {
+              setAbout("education");
+              setActiveAbout(3);
+            }}
+            className="link w-fit"
+          >
             Education
           </p>
-          <p onClick={() => setAbout("skills")} className="link w-fit">
+          <p
+            onClick={() => {
+              setAbout("skills");
+              setActiveAbout(4);
+            }}
+            className="link w-fit"
+          >
             Skills
           </p>
         </div>

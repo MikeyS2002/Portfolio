@@ -33,6 +33,20 @@ const workData = [
       },
     ],
   },
+  {
+    id: 3,
+    title: "Ignite",
+    date: "05.2020",
+    text: "HTML5",
+    img: "/images/ignite.png",
+    skills: [
+      {
+        logo: "FaReact",
+        color: "#61DBFB",
+        title: "React",
+      },
+    ],
+  },
 ];
 
 export default workData;
