@@ -154,7 +154,7 @@ const Details = ({ project }) => {
       </motion.div>
 
       <div className="mt-[100vh] project-slider max-w-[1600px] mx-aut0 md:py-20 md:px-10 px-2 sm:px-5 py-10">
-        <div className="flex flex-col gap-10 md:flex-row">
+        <div className="flex flex-col gap-5 md:gap-10 md:flex-row">
           <div className="min-w-[200px] max-w-[200px]">
             <div className="flex items-center gap-2 ">
               <BsLink45Deg className="text-[20px]" />
@@ -187,7 +187,8 @@ const Details = ({ project }) => {
               ))}
             </ul>
           </div>
-          <div className="md:w-px w-full bg-[#A5A5A5] h-px md:min-h-full"></div>
+          <div className="w-px bg-[#A5A5A5] min-h-full md:block hidden"></div>
+          <div className="w-full bg-[#A5A5A5] h-px md:hidden block"></div>
           <div
             className="space-y-5 content"
             dangerouslySetInnerHTML={{ __html: content }}
@@ -195,7 +196,7 @@ const Details = ({ project }) => {
         </div>
         <Swiper
           slidesPerView={"auto"}
-          spaceBetween={40}
+          spaceBetween={20}
           navigation={true}
           className="mt-10"
         >
