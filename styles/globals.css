@@ -113,9 +113,6 @@ body {
   .link {
     @apply cursor-pointer;
   }
-  a {
-    @apply underline transition-all duration-300 decoration-transparent hover:decoration-white;
-  }
 
   ::-moz-selection {
     @apply text-black bg-white;

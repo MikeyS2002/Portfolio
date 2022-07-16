@@ -145,7 +145,20 @@ const About = () => {
                 : about === "skills"
                 ? "top-[84%] w-[38px] "
                 : ""
-            } absolute h-[2px] bg-white transition-all left-0 duration-300`}
+            } absolute h-[2px] bg-white transition-all left-0 duration-300 md:block hidden`}
+          ></div>
+          <div
+            className={`${
+              about === "aboutMe"
+                ? "left-0 w-[77px]"
+                : about === "experience"
+                ? "left-[29%] w-[86px]"
+                : about === "education"
+                ? "left-[60%]  w-[80px]"
+                : about === "skills"
+                ? "left-[89%] w-[38px] "
+                : ""
+            } absolute h-[2px] bg-white transition-all left-0 duration-300 top-[90%] md:hidden block`}
           ></div>
           <p
             onClick={() => {

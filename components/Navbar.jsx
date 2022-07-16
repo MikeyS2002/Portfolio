@@ -78,7 +78,7 @@ export default function Navbar() {
             duration={500}
             onSetActive={handleSetActiveHome}
           >
-            <p className="">Home</p>
+            <p className="cursor-pointer">Home</p>
           </ScrollLink>
           <ScrollLink
             to="work"
@@ -88,7 +88,7 @@ export default function Navbar() {
             offset={-100}
             onSetActive={handleSetActiveWork}
           >
-            <p className="">Work</p>
+            <p className="cursor-pointer">Work</p>
           </ScrollLink>
           <ScrollLink
             to="about"
@@ -98,7 +98,7 @@ export default function Navbar() {
             offset={-20}
             onSetActive={handleSetActiveAbout}
           >
-            <p className="">About</p>
+            <p className="cursor-pointer">About</p>
           </ScrollLink>
         </>
       </motion.div>
