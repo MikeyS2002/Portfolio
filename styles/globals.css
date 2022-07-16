@@ -1,9 +1,7 @@
 body {
   overflow-x: hidden;
 }
-* {
-  cursor: none !important;
-}
+
 .font-poppins {
   font-family: "Poppins", sans-serif;
 }
@@ -17,13 +15,13 @@ body {
   -webkit-backdrop-filter: blur(5px) !important;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.05);
 }
-.swiper {
+.work-slider .swiper {
   height: 50vh;
 }
-.swiper-wrapper {
+.work-slider .swiper-wrapper {
   align-items: end;
 }
-.swiper-slide {
+.work-slider .swiper-slide {
   height: 80% !important;
   width: 60% !important;
   text-align: center;
@@ -33,16 +31,39 @@ body {
   border-radius: 4px;
   overflow: hidden;
 }
-.swiper-slide-active {
+.work-slider .swiper-slide-active {
   height: 100% !important;
 }
 @media only screen and (max-width: 768px) {
-  .swiper {
+  .work-slider .swiper {
     height: 15rem;
   }
-  .swiper-slide {
+  .work-slider .swiper-slide {
     width: 80% !important;
     margin: 0 2%;
+  }
+}
+.project-slider .swiper {
+  height: 18rem;
+}
+.project-slider .swiper-wrapper {
+  align-items: end;
+}
+.project-slider .swiper-slide {
+  height: 100% !important;
+  width: 45% !important;
+  transition: all 0.5s !important;
+
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+  .project-slider .swiper {
+    height: 10rem;
+  }
+  .project-slider .swiper-slide {
+    width: 80% !important;
   }
 }
 
@@ -83,8 +104,17 @@ body {
   h5 {
     @apply font-libre text-[18px] leading-none;
   }
+  h6 {
+    @apply font-libre leading-none text-[32px] md:text-[40px] italic;
+  }
   p {
     @apply font-poppins;
+  }
+  .link {
+    @apply cursor-pointer;
+  }
+  a {
+    @apply underline transition-all duration-300 decoration-transparent hover:decoration-white;
   }
 
   ::-moz-selection {

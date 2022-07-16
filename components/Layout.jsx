@@ -13,32 +13,7 @@ export default function Layout({ children }) {
     <>
       <Navbar />
       <Contact />
-      <AnimatedCursor
-        innerStyle={{ backgroundColor: "white", mixBlendMode: "difference" }}
-        outerStyle={{
-          border: "1px solid white",
-          backgroundColor: "transparant",
-          mixBlendMode: "difference",
-        }}
-        innerSize={6}
-        outerSize={30}
-        outerAlpha={0.2}
-        innerScale={1}
-        outerScale={2}
-        clickables={[
-          "a",
-          'input[type="text"]',
-          'input[type="email"]',
-          'input[type="number"]',
-          'input[type="submit"]',
-          'input[type="image"]',
-          "label[for]",
-          "select",
-          "textarea",
-          "button",
-          ".link",
-        ]}
-      />
+
       {children}
       <Footer />
     </>

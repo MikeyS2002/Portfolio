@@ -108,7 +108,7 @@ export default function Navbar() {
           variants={navVariants}
           animate={homepage === "/" ? "hidden" : "shown"}
           initial={{ opacity: 0 }}
-          className="fixed z-30 flex gap-20 p-4 bg-white rounded-full link group left-10 top-10 glass bg-opacity-5"
+          className="fixed z-30 flex gap-20 p-4 bg-white rounded-full link glass left-10 top-10 bg-opacity-5"
         >
           <AiOutlineArrowLeft className="transition-transform group-hover:scale-[1.1]" />
           <svg

@@ -7,6 +7,7 @@ import {
   gql,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import { gql as gql2, GraphQLClient } from "graphql-request";
 
 import Header from "../components/Header";
 import Loading from "../components/Loading";
@@ -15,17 +16,37 @@ import Work from "../components/Work";
 import About from "../components/About";
 import { OffsetContext } from "../contexts/OffsetContext";
 
-export default function Home({ loading, contributions }) {
+const query = gql2`
+query MyQuery {
+  allProjects(orderBy: _createdAt_ASC) {
+    title
+    slug
+    skills
+    date
+    content
+    bannerImage {
+      url
+    }
+    slider {
+      url
+    }
+    blackOverlayText
+    index
+  }
+}
+`;
+export default function Home({ loading, contributions, project }) {
   const { setContributionsState } = useContext(OffsetContext);
   const contributionsArr = [];
 
-  contributions.weeks.forEach((element, i) => {
-    const sum = element.contributionDays.reduce((accumulator, object) => {
-      return accumulator + object.contributionCount;
-    }, 0);
-    contributionsArr.push(sum);
-  });
   useEffect(() => {
+    contributions.weeks.forEach((element, i) => {
+      const sum = element.contributionDays.reduce((accumulator, object) => {
+        return accumulator + object.contributionCount;
+      }, 0);
+      contributionsArr.push(sum);
+    });
+
     setContributionsState(contributionsArr);
   }, []);
 
@@ -40,7 +61,7 @@ export default function Home({ loading, contributions }) {
       <>
         <Navbar />
         <Header loading={loading} />
-        <Work />
+        <Work projects={project} />
         <About />
       </>
     </div>
@@ -51,6 +72,14 @@ export async function getStaticProps() {
   const httpLink = createHttpLink({
     uri: "https://api.github.com/graphql",
   });
+  const endpoint = "https://graphql.datocms.com/";
+  const graphqlClient = new GraphQLClient(endpoint, {
+    headers: {
+      "content-type": "application/js",
+      authorization: "bearer " + process.env.CMS_API_KEY,
+    },
+  });
+  const project = await graphqlClient.request(query);
 
   const authLink = setContext((_, { headers }) => {
     return {
@@ -90,6 +119,7 @@ export async function getStaticProps() {
   return {
     props: {
       contributions,
+      project,
     },
   };
 }

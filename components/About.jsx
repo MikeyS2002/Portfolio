@@ -368,7 +368,7 @@ const About = () => {
                   className="absolute flex items-center gap-1 link"
                 >
                   <div
-                    style={{ backgroundColor: skill.color }}
+                    style={{ background: skill.color }}
                     className="w-6 h-6 bg-white rounded-sm "
                   >
                     <Icon

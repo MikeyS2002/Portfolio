@@ -30,7 +30,6 @@ export default function Footer() {
         week: i !== 20 ? `${20 - i} weeks ago` : "This week",
       });
     });
-    console.log(dataArr);
     setData(dataArr);
   }, [contributionsState]);
 
@@ -92,44 +91,46 @@ export default function Footer() {
             </motion.li>
           </ul>
         </div>
-        <ul className="">
-          <li className="justify-end mb-4 md:mb-2 md:flex">
-            <h5>Github contributions last 20 weeks:</h5>
-          </li>
-          <motion.li
-            ref={ref}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            transition={{ duration: 0.5 }}
-            variants={{
-              visible: { opacity: 1, y: 0 },
-              hidden: { opacity: 0, y: 10 },
-            }}
-            className="md:w-[400px] h-[150px] md:translate-x-0 md:scale-100 -translate-x-6 scale-110 md:translate-y-3"
-          >
-            {inView && (
-              <ResponsiveContainer width="100%" height={150}>
-                <AreaChart data={data}>
-                  <Area
-                    dataKey="contributions"
-                    stroke="#ffffff"
-                    fill="transparent"
-                    isAnimationActive={true}
-                  />
-                  <XAxis dataKey="week" opacity={0.2} stroke="white" />
-                  <YAxis
-                    dataKey="contributions"
-                    tickCount={4}
-                    opacity={0.2}
-                    stroke="white"
-                  />
-                  <Tooltip content={<CustomTooltip />} />
-                  <CartesianGrid opacity={0.2} vertical={false} />
-                </AreaChart>
-              </ResponsiveContainer>
-            )}
-          </motion.li>
-        </ul>
+        {contributionsState.length !== 0 && (
+          <ul className="">
+            <li className="justify-end mb-4 md:mb-2 md:flex">
+              <h5>Github contributions last 20 weeks:</h5>
+            </li>
+            <motion.li
+              ref={ref}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+              transition={{ duration: 0.5 }}
+              variants={{
+                visible: { opacity: 1, y: 0 },
+                hidden: { opacity: 0, y: 10 },
+              }}
+              className="md:w-[400px] h-[150px] md:translate-x-0 md:scale-100 -translate-x-6 scale-110 md:translate-y-3"
+            >
+              {inView && (
+                <ResponsiveContainer width="100%" height={150}>
+                  <AreaChart data={data}>
+                    <Area
+                      dataKey="contributions"
+                      stroke="#ffffff"
+                      fill="transparent"
+                      isAnimationActive={true}
+                    />
+                    <XAxis dataKey="week" opacity={0.2} stroke="white" />
+                    <YAxis
+                      dataKey="contributions"
+                      tickCount={4}
+                      opacity={0.2}
+                      stroke="white"
+                    />
+                    <Tooltip content={<CustomTooltip />} />
+                    <CartesianGrid opacity={0.2} vertical={false} />
+                  </AreaChart>
+                </ResponsiveContainer>
+              )}
+            </motion.li>
+          </ul>
+        )}
         <motion.ul
           initial="hidden"
           whileInView="visible"
