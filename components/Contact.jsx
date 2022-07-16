@@ -40,7 +40,7 @@ const Contact = () => {
       <div className="absolute top-0 -right-[20px] h-full w-[20px] bg-white"></div>
       <div
         onClick={openContactHandler}
-        className="absolute flex items-center gap-2 px-2 py-1 rotate-90 bg-white rounded-b cursor-pointer top-1/2 -left-20 link"
+        className="absolute flex items-center gap-2 px-2 py-1 rotate-90 bg-white rounded-b cursor-pointer top-1/2 -left-[74px] left md:-left-20 link"
       >
         <div className="flex flex-col justify-between w-3 h-[6px]">
           <div
@@ -71,7 +71,7 @@ const Contact = () => {
             required
             placeholder=" "
           />
-          <span className="absolute -translate-y-1/2 left-4 top-1/2 text-[#757575]  pointer-events-none transition-all">
+          <span className="absolute -translate-y-1/2 left-4 top-1/2 text-[#757575] md:text-[16px] text-[14px] pointer-events-none transition-all">
             Your name
           </span>
         </div>
@@ -83,7 +83,7 @@ const Contact = () => {
             required
             placeholder=" "
           />
-          <span className="absolute -translate-y-1/2 left-4 top-1/2 text-[#757575]  pointer-events-none transition-all">
+          <span className="absolute -translate-y-1/2 left-4 top-1/2 text-[#757575] md:text-[16px] text-[14px]  pointer-events-none transition-all">
             Email address
           </span>
         </div>
@@ -95,7 +95,7 @@ const Contact = () => {
             required
             placeholder=" "
           />
-          <span className="absolute -translate-y-1/2 left-4 top-1/2 text-[#757575]  pointer-events-none transition-all">
+          <span className="absolute -translate-y-1/2 left-4 top-1/2 text-[#757575] md:text-[16px] text-[14px] pointer-events-none transition-all">
             Subject
           </span>
         </div>
@@ -107,12 +107,12 @@ const Contact = () => {
             required
             placeholder=" "
           />
-          <span className="absolute top-2 left-4  text-[#757575]  pointer-events-none transition-all">
+          <span className="absolute top-2 left-4  text-[#757575] md:text-[16px] text-[14px] pointer-events-none transition-all">
             Message
           </span>
         </div>
         <button type="submit" className="px-6 py-3 text-white bg-black rounded">
-          Send mesage
+          Send message
         </button>
       </form>
     </motion.div>

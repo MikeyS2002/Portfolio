@@ -35,13 +35,13 @@ export default function Navbar() {
     shown: {
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: 1,
         ease: "easeOut",
       },
     },
     hidden: {
       opacity: 0,
-      ease: "easeOut",
+      ease: "easeIn",
     },
   };
   const pathVariants = {

@@ -199,14 +199,15 @@ const About = () => {
             </p>
           </div>
           <div className="w-px md:block hidden bg-[#A5A5A5] h-[232px]"></div>
-          <div className="relative w-full col-span-2 my-auto sm:min-h-0 min-h-[270px]">
+          <div className="relative w-full col-span-2 my-auto sm:min-h-0 min-h-[270px] md:max-w-[65%]">
             {about === "aboutMe" && (
               <>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo,
-                  ab non. Pariatur unde iusto, deleniti sit vitae fugit debitis!
-                  Magnam impedit provident aut sapiente expedita reprehenderit
-                  corporis omnis.
+                  Hi, my name is Mike, I am currently studying software
+                  engineering at Amsterdam University of Applied Science. I have
+                  a passion for web development and love to work with modern
+                  front-end frameworks. My nickname is, therefore 'JavaScript
+                  ninja', at least that's how I call myself. :p
                   <br />
                   <br /> Doloremque reiciendis est sequi ut ad dolores, sunt
                   modi nam temporibus possimus excepturi praesentium obcaecati
@@ -214,7 +215,7 @@ const About = () => {
                 </p>
                 <motion.div
                   style={{ y: y1 }}
-                  className="absolute top-0 right-0 w-[150px] h-[200px] -z-10 hidden md:block"
+                  className="absolute top-0 -right-[25%] w-[150px] h-[200px] -z-10 hidden md:block"
                 >
                   <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
                   <div className="relative z-0 w-full h-full rounded oveflow-hidden ">
@@ -379,7 +380,7 @@ const About = () => {
                       right: rightOffs[i],
                       bottom: bottomOffs[i],
                     }}
-                    className="absolute flex items-center gap-1 link"
+                    className="absolute flex items-center gap-1 cursor-grab"
                   >
                     <div
                       style={{ background: skill.color }}

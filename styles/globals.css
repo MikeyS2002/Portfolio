@@ -80,6 +80,94 @@ body {
   top: -19px;
   left: 0;
 }
+.blob1 {
+  animation-name: blob1;
+  animation-duration: 17s;
+  animation-iteration-count: infinite;
+}
+.blob2 {
+  animation-name: blob2;
+  animation-duration: 19s;
+  animation-iteration-count: infinite;
+}
+.blob3 {
+  animation-name: blob3;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+}
+.blob4 {
+  animation-name: blob4;
+  animation-duration: 14s;
+  animation-iteration-count: infinite;
+}
+@keyframes blob1 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  25% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  50% {
+    transform: translate(40px, -10px) scale(1);
+  }
+  75% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+@keyframes blob2 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  25% {
+    transform: translate(-10px, 20px) scale(1.2);
+  }
+  50% {
+    transform: translate(30px, 30px) scale(1);
+  }
+  75% {
+    transform: translate(-20px, -30px) scale(0.8);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+@keyframes blob3 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  25% {
+    transform: translate(10px, -40px) scale(1.1);
+  }
+  50% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  75% {
+    transform: translate(-20px, -10px) scale(0.85);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+@keyframes blob4 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  25% {
+    transform: translate(-10px, -20px) scale(1.1);
+  }
+  50% {
+    transform: translate(40px, -30px) scale(1);
+  }
+  75% {
+    transform: translate(-10px, 20px) scale(0.95);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
 
 @tailwind base;
 @tailwind components;
@@ -87,7 +175,7 @@ body {
 
 @layer base {
   body {
-    @apply text-white bg-black font-poppins;
+    @apply overflow-x-hidden text-white bg-black font-poppins;
   }
   h1 {
     @apply font-libre leading-none md:text-[96px] text-[68px];
