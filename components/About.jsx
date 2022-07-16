@@ -1,22 +1,34 @@
 import React, { useState, useRef, useEffect, createRef } from "react";
 import Image from "next/image";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { useInView } from "react-intersection-observer";
 
 import skillsData from "../data/skillsData";
 import Icon from "./Icon";
 
-const variants = {
-  shown: { opacity: 1, x: 0 },
-  hidden: { opacity: 0, x: "-100%" },
+const pathVariants = {
+  shown: {
+    pathLength: 1.1,
+    transition: { duration: 1, ease: "easeOut" },
+  },
+  hidden: {
+    pathLength: 0,
+    transition: { duration: 1, ease: "easeOut" },
+  },
 };
 
 const About = () => {
+  const { ref, inView } = useInView({
+    threshold: 1,
+  });
   const { scrollYProgress } = useViewportScroll();
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
 
   const [about, setAbout] = useState("aboutMe");
+  const [activeAbout, setActiveAbout] = useState(1);
   const [topPos, setTopPos] = useState([]);
   const [leftPos, setLeftPos] = useState([]);
   const [topOffs, setTopOffs] = useState([]);
@@ -71,11 +83,70 @@ const About = () => {
     }
   }, [about]);
 
+  useEffect(() => {
+    switch (activeAbout) {
+      case 1:
+        setAbout("aboutMe");
+        break;
+      case 2:
+        setAbout("experience");
+        break;
+      case 3:
+        setAbout("education");
+        break;
+      case 4:
+        setAbout("skills");
+        break;
+      default:
+        setAbout("aboutMe");
+        break;
+    }
+  }, [activeAbout]);
+
+  const nextAboutHandler = () => {
+    if (activeAbout < 4) {
+      setActiveAbout(activeAbout + 1);
+    } else if (activeAbout === 4) {
+      setActiveAbout(1);
+    }
+  };
+  const prevAboutHandler = () => {
+    if (activeAbout > 1) {
+      setActiveAbout(activeAbout - 1);
+    } else if (activeAbout === 1) {
+      setActiveAbout(4);
+    }
+  };
+
   return (
-    <section className="px-5 py-10 md:py-20 md:px-20 page-width" id="about">
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      variants={{
+        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 100 },
+      }}
+      className="px-5 py-10 md:py-20 md:px-20 page-width"
+      id="about"
+    >
       <h2 className="mb-10 text-center">About</h2>
       <div className="flex flex-col gap-10 md:gap-20 md:flex-row">
-        <div className="flex flex-row flex-wrap justify-between md:justify-center md:space-y-4 md:flex-col">
+        <div className="relative flex flex-row flex-wrap justify-between md:justify-center md:space-y-4 md:flex-col">
+          <div
+            className={`${
+              about === "aboutMe"
+                ? "top-[33%] w-[77px]"
+                : about === "experience"
+                ? "top-[50%] w-[86px]"
+                : about === "education"
+                ? "top-[67%]  w-[80px]"
+                : about === "skills"
+                ? "top-[84%] w-[38px] "
+                : ""
+            } absolute h-[2px] bg-white transition-all left-0 duration-300`}
+          ></div>
           <p onClick={() => setAbout("aboutMe")} className="link w-fit">
             About me
           </p>
@@ -288,7 +359,60 @@ const About = () => {
           )}
         </div>
       </div>
-    </section>
+      <div
+        ref={ref}
+        className="flex gap-10 md:gap-5 md:ml-[15.5rem] mx-auto md:mx-0 mt-5 w-fit"
+      >
+        <button
+          onClick={prevAboutHandler}
+          className="relative gap-20 p-4 bg-white rounded-full w-fit link group glass bg-opacity-5"
+        >
+          <AiOutlineArrowLeft className="transition-transform group-hover:scale-[1.1]" />
+          <svg
+            width="48"
+            height="48"
+            viewBox="0 0 48 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute top-0 left-0"
+          >
+            <motion.circle
+              cx="24"
+              cy="24"
+              r="23.5"
+              stroke="white"
+              initial="hidden"
+              animate={inView ? "shown" : "hidden"}
+              variants={pathVariants}
+            />
+          </svg>
+        </button>
+        <button
+          onClick={nextAboutHandler}
+          className="relative gap-20 p-4 bg-white rounded-full w-fit link group glass bg-opacity-5"
+        >
+          <AiOutlineArrowRight className="transition-transform group-hover:scale-[1.1]" />
+          <svg
+            width="48"
+            height="48"
+            viewBox="0 0 48 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute top-0 left-0 rotate-180"
+          >
+            <motion.circle
+              cx="24"
+              cy="24"
+              r="23.5"
+              stroke="white"
+              initial="hidden"
+              animate={inView ? "shown" : "hidden"}
+              variants={pathVariants}
+            />
+          </svg>
+        </button>
+      </div>
+    </motion.section>
   );
 };
 

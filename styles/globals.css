@@ -72,7 +72,7 @@ body {
     @apply font-libre leading-none md:text-[96px] text-[68px];
   }
   h2 {
-    @apply font-libre leading-none md:text-[96px] text-[68px];
+    @apply font-libre leading-none md:text-[96px] text-[56px];
   }
   h3 {
     @apply font-libre leading-none text-[24px] italic;

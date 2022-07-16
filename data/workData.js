@@ -3,27 +3,9 @@ const workData = [
     id: 1,
     title: "React music player",
     date: "05.2020",
-    text: "HTML5",
+    text: "Lorem Ipsum",
     img: "/images/react-music-player.jpg",
-    skills: [
-      {
-        logo: "FaReact",
-        color: "#61DBFB",
-        title: "React",
-      },
-      {
-        logo: "FaReact",
-        color: "#61DBFB",
-        title: "React",
-      },
-    ],
-  },
-  {
-    id: 2,
-    title: "React music player",
-    date: "05.2020",
-    text: "HTML5",
-    img: "/images/react-music-player.jpg",
+    textColor: "black",
     skills: [
       {
         logo: "FaReact",
@@ -38,59 +20,16 @@ const workData = [
     ],
   },
   {
-    id: 3,
-    title: "React music player",
+    id: 2,
+    title: "Ignite",
     date: "05.2020",
     text: "HTML5",
-    img: "/images/react-music-player.jpg",
+    img: "/images/ignite.png",
     skills: [
       {
         logo: "FaReact",
         color: "#61DBFB",
         title: "React",
-      },
-      {
-        logo: "FaReact",
-        color: "#61DBFB",
-        title: "React",
-      },
-    ],
-  },
-  {
-    id: 4,
-    title: "React music player",
-    date: "05.2020",
-    text: "HTML5",
-    img: "/images/react-music-player.jpg",
-    skills: [
-      {
-        logo: "SiNextdotjs",
-        color: "white",
-        title: "Next",
-      },
-      {
-        logo: "FaReact",
-        color: "#61DBFB",
-        title: "React",
-      },
-    ],
-  },
-  {
-    id: 5,
-    title: "React music player",
-    date: "05.2020",
-    text: "HTML5",
-    img: "/images/react-music-player.jpg",
-    skills: [
-      {
-        logo: "FaReact",
-        color: "#61DBFB",
-        title: "React",
-      },
-      {
-        logo: "SiNextdotjs",
-        color: "white",
-        title: "Next",
       },
     ],
   },

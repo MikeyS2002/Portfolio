@@ -6,6 +6,7 @@ import "swiper/css";
 import { OffsetContext } from "../contexts/OffsetContext";
 import workData from "../data/workData";
 import Icon from "./Icon";
+import { motion } from "framer-motion";
 
 const Work = () => {
   const ref = useRef();
@@ -24,7 +25,18 @@ const Work = () => {
   }, []);
 
   return (
-    <section className="w-full mt-20 mb-10 md:mt-40 md:mb-20" id="work">
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      variants={{
+        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 100 },
+      }}
+      className="w-full mt-20 mb-10 md:mt-40 md:mb-20"
+      id="work"
+    >
       <h2 className="mb-10 text-center">Work</h2>
       <Swiper
         ref={ref}
@@ -43,7 +55,11 @@ const Work = () => {
                     layout="fill"
                     objectFit="cover"
                   />
-                  <p className="absolute z-30 px-4 py-2 transition-opacity duration-300 bg-white rounded glass top-5 left-5 bg-opacity-5">
+                  <p
+                    className={`${
+                      slide.textColor !== "black" ? "text-black" : ""
+                    } absolute z-30 px-4 py-2 transition-opacity duration-300 bg-white rounded glass top-5 left-5 bg-opacity-5 `}
+                  >
                     0{slide.id} / {slide.title}
                   </p>
                   <div className="absolute z-30 flex gap-5 bottom-5 left-5">
@@ -68,7 +84,7 @@ const Work = () => {
           );
         })}
       </Swiper>
-    </section>
+    </motion.section>
   );
 };
 

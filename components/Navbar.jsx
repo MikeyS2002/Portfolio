@@ -63,13 +63,13 @@ export default function Navbar() {
           <div
             className={`${
               underline === "home"
-                ? "left-[15%]"
+                ? "left-[15.5%] w-[47px]"
                 : underline === "work"
-                ? "left-[50%]"
+                ? "left-[50%] w-[40px]"
                 : underline === "about"
-                ? "left-[85%]"
+                ? "left-[84.5%] w-[50px]"
                 : ""
-            }  absolute bottom-3 h-[2px] w-[30px] bg-white transition-all duration-300 -translate-x-1/2`}
+            }  absolute bottom-[14px] h-[2px]  bg-white transition-all duration-300 -translate-x-1/2`}
           ></div>
           <ScrollLink
             to="header"

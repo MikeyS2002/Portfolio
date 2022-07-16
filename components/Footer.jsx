@@ -2,14 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 import { motion } from "framer-motion";
 import { OffsetContext } from "../contexts/OffsetContext";
 import CustomTooltip from "./CustomTooltip";
+import { useInView } from "react-intersection-observer";
 import {
-  LineChart,
-  Line,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   Area,
   ResponsiveContainer,
   AreaChart,
@@ -19,6 +17,9 @@ export default function Footer() {
   const [clock, setClock] = useState();
   const { contributionsState } = useContext(OffsetContext);
   const [data, setData] = useState([]);
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+  });
 
   useEffect(() => {
     const constributionArr = contributionsState.slice(-1 * 21);
@@ -62,48 +63,91 @@ export default function Footer() {
               <p>+31 624 4312 74</p>
             </li>
           </ul>
-          <ul className="hidden gap-5 md:flex">
-            <li className="cursor-pointer">
+          <ul className="hidden gap-5 overflow-hidden md:flex">
+            <motion.li
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false }}
+              transition={{ duration: 0.5 }}
+              variants={{
+                visible: { opacity: 1, y: 0 },
+                hidden: { opacity: 0, y: 10 },
+              }}
+              className="cursor-pointer"
+            >
               <a>Github</a>
-            </li>
-            <li className="cursor-pointer">
+            </motion.li>
+            <motion.li
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false }}
+              transition={{ duration: 0.5 }}
+              variants={{
+                visible: { opacity: 1, y: 0 },
+                hidden: { opacity: 0, y: 10 },
+              }}
+              className="cursor-pointer"
+            >
               <a>LinkedIn</a>
-            </li>
+            </motion.li>
           </ul>
         </div>
         <ul className="">
-          <li className="justify-end mb-4 md:mb-0 md:flex">
+          <li className="justify-end mb-4 md:mb-2 md:flex">
             <h5>Github contributions last 20 weeks:</h5>
           </li>
-          <li className="md:w-[400px] md:translate-x-0 md:scale-100 -translate-x-6 scale-110 md:translate-y-3">
-            <ResponsiveContainer width="100%" height={150}>
-              <AreaChart data={data}>
-                <Area
-                  dataKey="contributions"
-                  stroke="#ffffff"
-                  fill="transparent"
-                />
-                <XAxis dataKey="week" opacity={0.2} stroke="white" />
-                <YAxis
-                  dataKey="contributions"
-                  tickCount={4}
-                  opacity={0.2}
-                  stroke="white"
-                />
-                <Tooltip content={<CustomTooltip />} />
-                <CartesianGrid opacity={0.2} vertical={false} />
-              </AreaChart>
-            </ResponsiveContainer>
-          </li>
+          <motion.li
+            ref={ref}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            transition={{ duration: 0.5 }}
+            variants={{
+              visible: { opacity: 1, y: 0 },
+              hidden: { opacity: 0, y: 10 },
+            }}
+            className="md:w-[400px] h-[150px] md:translate-x-0 md:scale-100 -translate-x-6 scale-110 md:translate-y-3"
+          >
+            {inView && (
+              <ResponsiveContainer width="100%" height={150}>
+                <AreaChart data={data}>
+                  <Area
+                    dataKey="contributions"
+                    stroke="#ffffff"
+                    fill="transparent"
+                    isAnimationActive={true}
+                  />
+                  <XAxis dataKey="week" opacity={0.2} stroke="white" />
+                  <YAxis
+                    dataKey="contributions"
+                    tickCount={4}
+                    opacity={0.2}
+                    stroke="white"
+                  />
+                  <Tooltip content={<CustomTooltip />} />
+                  <CartesianGrid opacity={0.2} vertical={false} />
+                </AreaChart>
+              </ResponsiveContainer>
+            )}
+          </motion.li>
         </ul>
-        <ul className="flex gap-5 md:hidden">
+        <motion.ul
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false }}
+          transition={{ duration: 0.5 }}
+          variants={{
+            visible: { opacity: 1, y: 0 },
+            hidden: { opacity: 0, y: 10 },
+          }}
+          className="flex gap-5 md:hidden"
+        >
           <li className="cursor-pointer">
             <a>Github</a>
           </li>
           <li className="cursor-pointer">
             <a>LinkedIn</a>
           </li>
-        </ul>
+        </motion.ul>
       </div>
     </footer>
   );

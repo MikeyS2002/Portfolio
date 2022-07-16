@@ -7,6 +7,7 @@ import { OffsetContext } from "../contexts/OffsetContext";
 
 const Details = () => {
   const { offset } = useContext(OffsetContext);
+
   return (
     <section className="flex justify-center h-screen">
       <div
@@ -29,7 +30,7 @@ const Details = () => {
         </motion.h2>
       </div>
 
-      <div className="absolute overflow-hidden -translate-x-1/2 left-1/2 w-fit top-[28%]">
+      <div className="absolute overflow-hidden -translate-x-1/2 left-1/2 w-fit top-[28%] px-5">
         <motion.p
           initial={{
             x: -100,
@@ -70,10 +71,11 @@ const Details = () => {
           top: "50%",
           left: 0,
           x: 0,
+          height: "50vh",
           width: "100%",
           transition: { duration: 1 },
         }}
-        className="w-[60%] h-[50vh] absolute f"
+        className="md:w-[60%] w-[80%] h-[15rem] md:h-[50vh] absolute"
         style={{ top: offset === 0 ? `50%` : `${offset}px` }}
       >
         <div className="relative w-full h-full rounded">
