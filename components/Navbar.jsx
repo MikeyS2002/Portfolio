@@ -41,7 +41,9 @@ export default function Navbar() {
     },
     hidden: {
       opacity: 0,
-      ease: "easeIn",
+      transition: {
+        ease: "easeIn",
+      },
     },
   };
   const pathVariants = {

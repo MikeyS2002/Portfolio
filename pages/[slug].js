@@ -2,16 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import { motion } from "framer-motion";
-import { AiOutlineArrowDown } from "react-icons/ai";
+
+import { OffsetContext } from "../contexts/OffsetContext";
 import { gql as gql2, GraphQLClient } from "graphql-request";
+
 import Icon from "../components/Icon";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { OffsetContext } from "../contexts/OffsetContext";
-import SliderButtons from "../components/SliderButtons";
-import { BsLink45Deg } from "react-icons/bs";
-import { AiOutlineBranches } from "react-icons/ai";
+import { AiOutlineArrowDown } from "react-icons/ai";
+
+import SlugContent from "../components/SlugContent";
 
 const container = {
   show: {
@@ -30,22 +29,11 @@ const item = {
 
 const Details = ({ project }) => {
   const { offset } = useContext(OffsetContext);
-  const {
-    bannerImage,
-    title,
-    date,
-    index,
-    skills,
-    typeProject,
-    blackOverlayText,
-    content,
-    slider,
-    websiteUrl,
-    githubRepo,
-  } = project.project;
+  const { bannerImage, title, date, index, skills, blackOverlayText } =
+    project.project;
   const [topPos, setTopPos] = useState([]);
   const [rightPos, setRightPos] = useState([]);
-
+  const [topOffset, setTopOffset] = useState();
   const top = [];
   const right = [];
 
@@ -56,6 +44,19 @@ const Details = ({ project }) => {
     });
     setTopPos(top);
     setRightPos(right);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setTopOffset(
+        document.documentElement.scrollTop || document.body.scrollTop
+      );
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -113,7 +114,6 @@ const Details = ({ project }) => {
             Work
           </motion.h2>
         </div>
-
         <div className="absolute overflow-hidden -translate-x-1/2 left-1/2 w-fit bottom-[51%] sm:top-[29%] px-2 sm:px-5">
           <motion.p
             initial={{
@@ -217,82 +217,7 @@ const Details = ({ project }) => {
           </div>
         </motion.div>
 
-        <div className="mt-[100vh] project-slider max-w-[1600px] mx-aut0 md:py-20 md:px-10 px-2 sm:px-5 py-10">
-          <div className="flex flex-col gap-5 md:gap-10 md:flex-row">
-            <div className="min-w-[200px] max-w-[200px]">
-              <div className="flex items-center gap-2 ">
-                <BsLink45Deg className="text-[20px]" />
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href={websiteUrl}
-                  className="break-words"
-                >
-                  {title}
-                </a>
-              </div>
-              {}
-              <div className="flex items-center gap-2 ">
-                <AiOutlineBranches className="text-[20px]" />
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href={githubRepo}
-                  className="break-words"
-                >
-                  Github repository
-                </a>
-              </div>
-              <p className="mt-5">{typeProject}</p>
-              <p className="mt-5">Skills:</p>
-              <ul className="ml-5 list-disc">
-                {skills.map((skill, i) => (
-                  <li key={i}>{skill.title}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="w-px bg-[#A5A5A5] min-h-full md:block hidden"></div>
-            <div className="w-full bg-[#A5A5A5] h-px md:hidden block"></div>
-            <div
-              className="space-y-5 content"
-              dangerouslySetInnerHTML={{ __html: content }}
-            ></div>
-          </div>
-          <Swiper
-            slidesPerView={"auto"}
-            spaceBetween={20}
-            navigation={true}
-            className="mt-10"
-          >
-            {slider.map((slide, i) => (
-              <SwiperSlide key={i}>
-                <div className="relative w-full h-full">
-                  <Image
-                    src={slide.url}
-                    alt=""
-                    layout="fill"
-                    objectFit="cover"
-                    placeholder="blur"
-                    blurDataURL={slide.url}
-                  />
-                </div>
-              </SwiperSlide>
-            ))}
-            <SwiperSlide>
-              <div className="relative w-full h-full">
-                <Image
-                  src={bannerImage.url}
-                  alt=""
-                  layout="fill"
-                  objectFit="cover"
-                  placeholder="blur"
-                  blurDataURL={bannerImage.url}
-                />
-              </div>
-            </SwiperSlide>
-            <SliderButtons />
-          </Swiper>
-        </div>
+        <SlugContent project={project.project} />
       </section>
     </>
   );
