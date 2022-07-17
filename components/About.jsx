@@ -203,11 +203,12 @@ const About = () => {
             {about === "aboutMe" && (
               <>
                 <p>
-                  Hi, my name is Mike, I am currently studying software
+                  Hi, my name is Mike, I'm currently studying software
                   engineering at Amsterdam University of Applied Science. I have
                   a passion for web development and love to work with modern
-                  front-end frameworks. My nickname is, therefore 'JavaScript
-                  ninja', at least that's how I call myself. :p
+                  front-end frameworks. My nickname is, therefore
+                  &apos;JavaScript ninja&apos;, at least that&apos;s how I call
+                  myself. :p
                   <br />
                   <br /> Doloremque reiciendis est sequi ut ad dolores, sunt
                   modi nam temporibus possimus excepturi praesentium obcaecati
