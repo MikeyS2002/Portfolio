@@ -50,6 +50,10 @@ const Contact = () => {
       .then((response) => {
         setSending(false);
         reset();
+        setTimeout(() => {
+          setContactOpen(true);
+          document.body.style.overflow = "auto";
+        }, 1000);
       })
       .catch((err) => {
         console.error(err);
