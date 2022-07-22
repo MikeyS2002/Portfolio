@@ -123,6 +123,6 @@ export async function getStaticProps() {
       contributions,
       project,
     },
-    revalidate: 60,
+    revalidate: 10,
   };
 }
