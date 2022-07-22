@@ -83,7 +83,6 @@ export async function getStaticProps() {
     },
   });
   const project = await graphqlClient.request(query);
-
   const authLink = setContext((_, { headers }) => {
     return {
       headers: {
@@ -124,5 +123,6 @@ export async function getStaticProps() {
       contributions,
       project,
     },
+    revalidate: 60,
   };
 }

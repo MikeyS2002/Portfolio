@@ -53,7 +53,7 @@ export default function Footer() {
               <h3>Mike Schaper</h3>
             </li>
             <li>
-              <p>Amserdam, Netherlands</p>
+              <p>Amsterdam, Netherlands</p>
             </li>
             <li>
               <p>CEST {clock}</p>

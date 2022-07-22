@@ -57,6 +57,9 @@ body {
   border-radius: 4px;
   overflow: hidden;
 }
+textarea[name="message"] {
+  resize: none;
+}
 
 @media only screen and (max-width: 768px) {
   .project-slider .swiper {
@@ -67,14 +70,13 @@ body {
   }
 }
 
-.inputBox input:valid ~ span,
 .inputBox input:not(:placeholder-shown) ~ span,
 .inputBox input:focus ~ span {
   font-size: 12px;
   top: -10px;
   left: 0;
 }
-.inputBox textarea:valid ~ span,
+.inputBox textarea:not(:placeholder-shown) ~ span,
 .inputBox textarea:focus ~ span {
   font-size: 12px;
   top: -19px;
@@ -169,6 +171,51 @@ body {
   }
 }
 
+.ahashakeheartache {
+  -webkit-animation: kf_shake 1.4s 1 linear;
+  -moz-animation: kf_shake 1.4s 1 linear;
+  -o-animation: kf_shake 1.4s 1 linear;
+}
+@keyframes kf_shake {
+  0% {
+    -webkit-transform: translate(15px);
+    opacity: 1;
+  }
+  5% {
+    -webkit-transform: translate(-15px);
+  }
+  10% {
+    -webkit-transform: translate(10px);
+  }
+  15% {
+    -webkit-transform: translate(-10px);
+  }
+  20% {
+    -webkit-transform: translate(5px);
+  }
+  25% {
+    -webkit-transform: translate(-5px);
+  }
+  30% {
+    -webkit-transform: translate(5px);
+  }
+  40% {
+    -webkit-transform: translate(-2px);
+  }
+  45% {
+    -webkit-transform: translate(2px);
+  }
+  50% {
+    -webkit-transform: translate(0);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -207,6 +254,12 @@ body {
   }
   ::selection {
     @apply text-black bg-white;
+  }
+  .whitebg ::-moz-selection {
+    @apply text-white bg-black;
+  }
+  .whitebg ::selection {
+    @apply text-white bg-black;
   }
   @font-face {
     font-family: Libre;
