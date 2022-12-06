@@ -15,6 +15,7 @@ import {
   SiThreedotjs,
   SiGreensock,
   SiVite,
+  SiJava,
 } from "react-icons/si";
 
 const Icon = ({ iconName, iconClass }) => {
@@ -44,6 +45,10 @@ const Icon = ({ iconName, iconClass }) => {
     return <SiVite className={`${iconClass}`} />;
   } else if (iconName === "SiGreensock") {
     return <SiGreensock className={`${iconClass}`} />;
+  } else if (iconName === "SiShopify") {
+    return <SiShopify className={`${iconClass}`} />;
+  } else if (iconName === "SiJava") {
+    return <SiJava className={`${iconClass}`} />;
   } else {
     return;
   }

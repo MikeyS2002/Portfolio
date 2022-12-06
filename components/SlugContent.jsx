@@ -34,29 +34,34 @@ const SlugContent = ({ project }) => {
     >
       <div className="flex flex-col gap-5 md:gap-10 md:flex-row">
         <div className="min-w-[200px] max-w-[200px]">
-          <div className="flex items-center gap-2 ">
-            <BsLink45Deg className="text-[20px]" />
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={websiteUrl}
-              className="break-words"
-            >
-              {title}
-            </a>
-          </div>
-          {}
-          <div className="flex items-center gap-2 ">
-            <AiOutlineBranches className="text-[20px]" />
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={githubRepo}
-              className="break-words"
-            >
-              Github repository
-            </a>
-          </div>
+          {websiteUrl && (
+            <div className="flex items-center gap-2 ">
+              <BsLink45Deg className="text-[20px]" />
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={websiteUrl}
+                className="break-words"
+              >
+                {title}
+              </a>
+            </div>
+          )}
+
+          {githubRepo && (
+            <div className="flex items-center gap-2 ">
+              <AiOutlineBranches className="text-[20px]" />
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={githubRepo}
+                className="break-words"
+              >
+                Github repository
+              </a>
+            </div>
+          )}
+
           <p className="mt-5">{typeProject}</p>
           <p className="mt-5">Skills:</p>
           <ul className="ml-5 list-disc">

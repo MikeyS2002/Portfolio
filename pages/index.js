@@ -18,10 +18,11 @@ import { OffsetContext } from "../contexts/OffsetContext";
 
 const query = gql2`
 query MyQuery {
-  allProjects(orderBy: _createdAt_ASC) {
+  allProjects(orderBy: index_ASC,) {
     title
     slug
     skills
+    objectTop
     date
     content
     bannerImage {

@@ -55,6 +55,7 @@ const Work = ({ projects }) => {
                     objectFit="cover"
                     placeholder="blur"
                     blurDataURL={slide.bannerImage.url}
+                    objectPosition={slide.objectTop ? `top` : `center`}
                   />
                   <p
                     className={`${

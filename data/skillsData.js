@@ -35,6 +35,11 @@ const skillsData = [
     title: "Tailwind",
   },
   {
+    logo: "SiShopify",
+    color: "#96bf48",
+    title: "Shopify",
+  },
+  {
     logo: "SiDotnet",
     color: "#512BD4",
     title: "ASP.NET",
@@ -59,6 +64,11 @@ const skillsData = [
     color:
       "linear-gradient(135deg, rgba(81,197,254,1) 0%, rgba(189,52,254,1) 100%)",
     title: "Vite",
+  },
+  {
+    logo: "SiJava",
+    color: "#E92D2F",
+    title: "Java",
   },
 ];
 

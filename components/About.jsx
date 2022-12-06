@@ -1,7 +1,11 @@
 import React, { useState, useRef, useEffect, createRef } from "react";
 import Image from "next/image";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import {
+  AiOutlineArrowLeft,
+  AiOutlineArrowRight,
+  AiOutlineArrowUp,
+} from "react-icons/ai";
 import { useInView } from "react-intersection-observer";
 
 import skillsData from "../data/skillsData";
@@ -26,6 +30,7 @@ const About = () => {
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  const y4 = useTransform(scrollYProgress, [0, 1], [0, -130]);
 
   const [about, setAbout] = useState("aboutMe");
   const [activeAbout, setActiveAbout] = useState(1);
@@ -199,20 +204,15 @@ const About = () => {
             </p>
           </div>
           <div className="w-px md:block hidden bg-[#A5A5A5] h-[232px]"></div>
-          <div className="relative w-full col-span-2 my-auto sm:min-h-0 min-h-[270px] md:max-w-[65%]">
+          <div className="relative w-full col-span-2 my-auto sm:min-h-0 min-h-[270px] ">
             {about === "aboutMe" && (
               <>
-                <p>
+                <p className="md:max-w-[80%]">
                   Hi, my name is Mike, I&apos;m currently studying software
                   engineering at Amsterdam University of Applied Science. I have
-                  a passion for web development and love to work with modern
-                  front-end frameworks. My nickname is, therefore
-                  &apos;JavaScript ninja&apos;, at least that&apos;s how I call
-                  myself. :p
-                  <br />
-                  <br /> Doloremque reiciendis est sequi ut ad dolores, sunt
-                  modi nam temporibus possimus excepturi praesentium obcaecati
-                  qui corporis nisi facilis rem perspiciatis ipsa!
+                  a passion for web development and love working with modern
+                  front-end frameworks. Therefore, I am known as the JavaScript
+                  ninja, at least that is what I call myself. :p
                 </p>
                 <motion.div
                   style={{ y: y1 }}
@@ -234,7 +234,7 @@ const About = () => {
                   style={{ y: y2 }}
                   className="absolute -bottom-[120px] right-[60%] -z-10  w-[180px] h-[130px] hidden md:block"
                 >
-                  <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
+                  <div className="absolute z-10 w-full h-full bg-black opacity-60"></div>
                   <div className="relative z-0 w-full h-full rounded oveflow-hidden">
                     <Image
                       src="/images/callie.png"
@@ -243,6 +243,23 @@ const About = () => {
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL="/images/callie.png"
+                    />
+                  </div>
+                </motion.div>
+                <motion.div
+                  style={{ y: y4 }}
+                  className="absolute -bottom-[90px] right-[15%] -z-10 w-[150px] h-[150px] hidden md:block"
+                >
+                  <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
+                  <div className="relative z-0 w-full h-full rounded oveflow-hidden ">
+                    <Image
+                      src="/images/lift.JPG"
+                      alt=""
+                      layout="fill"
+                      objectFit="cover"
+                      className="z-10"
+                      placeholder="blur"
+                      blurDataURL="/images/lift.JPG"
                     />
                   </div>
                 </motion.div>
@@ -358,44 +375,50 @@ const About = () => {
               </>
             )}
             {about === "skills" && (
-              <motion.div
-                animate={{ opacity: 1 }}
-                inital={{ opacity: 0 }}
-                ref={parentRef}
-                className={`h-[232px] gap-10 bg-[#181818] relative rounded `}
-              >
-                {skillsData.map((skill, i) => (
-                  <motion.div
-                    key={i}
-                    ref={lineRefs.current[i]}
-                    style={{
-                      top: `${topPos[i]}%`,
-                      left: `${leftPos[i]}%`,
-                    }}
-                    drag
-                    dragElastic={0.05}
-                    whileDrag={{ cursor: "grabbing" }}
-                    dragConstraints={{
-                      left: -leftOffs[i],
-                      top: -topOffs[i],
-                      right: rightOffs[i],
-                      bottom: bottomOffs[i],
-                    }}
-                    className="absolute flex items-center gap-1 cursor-grab"
-                  >
-                    <div
-                      style={{ background: skill.color }}
-                      className="w-6 h-6 bg-white rounded-sm "
+              <>
+                <motion.div
+                  animate={{ opacity: 1 }}
+                  inital={{ opacity: 0 }}
+                  ref={parentRef}
+                  className={`h-[232px] gap-10 bg-[#181818] relative rounded `}
+                >
+                  {skillsData.map((skill, i) => (
+                    <motion.div
+                      key={i}
+                      ref={lineRefs.current[i]}
+                      style={{
+                        top: `${topPos[i]}%`,
+                        left: `${leftPos[i]}%`,
+                      }}
+                      drag
+                      dragElastic={0.05}
+                      whileDrag={{ cursor: "grabbing" }}
+                      dragConstraints={{
+                        left: -leftOffs[i],
+                        top: -topOffs[i],
+                        right: rightOffs[i],
+                        bottom: bottomOffs[i],
+                      }}
+                      className="absolute flex items-center gap-1 cursor-grab"
                     >
-                      <Icon
-                        iconClass="w-full h-full p-[2px]"
-                        iconName={skill.logo}
-                      />
-                    </div>
-                    <p>{skill.title}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
+                      <div
+                        style={{ background: skill.color }}
+                        className="w-6 h-6 bg-white rounded-sm "
+                      >
+                        <Icon
+                          iconClass="w-full h-full p-[2px]"
+                          iconName={skill.logo}
+                        />
+                      </div>
+                      <p>{skill.title}</p>
+                    </motion.div>
+                  ))}
+                </motion.div>
+                <p className="absolute right-0  -bottom-6 text-[12px]  flex justify-center items-center gap-2">
+                  <AiOutlineArrowUp className="animate-bounce" /> Drag &amp;
+                  play around
+                </p>
+              </>
             )}
           </div>
         </div>

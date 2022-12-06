@@ -22,7 +22,7 @@ body {
   align-items: end;
 }
 .work-slider .swiper-slide {
-  height: 80% !important;
+  height: 100% !important;
   width: 60% !important;
   text-align: center;
   background-color: black;

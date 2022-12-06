@@ -29,8 +29,15 @@ const item = {
 
 const Details = ({ project }) => {
   const { offset } = useContext(OffsetContext);
-  const { bannerImage, title, date, index, skills, blackOverlayText } =
-    project.project;
+  const {
+    bannerImage,
+    title,
+    date,
+    index,
+    skills,
+    blackOverlayText,
+    objectTop,
+  } = project.project;
   const [topPos, setTopPos] = useState([]);
   const [rightPos, setRightPos] = useState([]);
   const [topOffset, setTopOffset] = useState();
@@ -97,7 +104,7 @@ const Details = ({ project }) => {
 
         <div
           style={{ top: offset === 0 ? `29%` : `${offset - 174}px` }}
-          className="absolute hidden overflow-hidden -translate-x-1/2 md:block left-1/2 w-fit"
+          className="absolute hidden overflow-hidden -translate-x-1/2 w-fit md:block left-1/2 "
         >
           <motion.h2
             animate={{
@@ -134,6 +141,7 @@ const Details = ({ project }) => {
             {date}
           </motion.p>
           <motion.h2
+            className="md:whitespace-nowrap"
             initial={{ y: 200 }}
             animate={{
               y: 0,
@@ -168,6 +176,7 @@ const Details = ({ project }) => {
               priority
               objectFit="cover"
               src={bannerImage.url}
+              objectPosition={objectTop ? `top` : `center`}
             />
             <motion.div
               animate={{
@@ -254,12 +263,13 @@ export async function getStaticPaths() {
 
 const query = gql2`
   query MyQuery($slug: String!) {
-    project(filter: { slug: { eq: $slug } }) {
+    project( filter: { slug: { eq: $slug } }) {
       slug
       title
       skills
       githubRepo
       typeProject
+      objectTop
       index
       slider {
         url
