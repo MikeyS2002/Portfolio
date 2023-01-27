@@ -35,7 +35,7 @@ const SlugContent = ({ project }) => {
       <div className="flex flex-col gap-5 md:gap-10 md:flex-row">
         <div className="min-w-[200px] max-w-[200px]">
           {websiteUrl && (
-            <div className="flex items-center gap-2 ">
+            <div className="flex items-center gap-2 content">
               <BsLink45Deg className="text-[20px]" />
               <a
                 target="_blank"
@@ -49,7 +49,7 @@ const SlugContent = ({ project }) => {
           )}
 
           {githubRepo && (
-            <div className="flex items-center gap-2 ">
+            <div className="flex items-center gap-2 content">
               <AiOutlineBranches className="text-[20px]" />
               <a
                 target="_blank"
