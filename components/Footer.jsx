@@ -74,7 +74,13 @@ export default function Footer() {
               }}
               className="cursor-pointer"
             >
-              <a>Github</a>
+              <a
+                href="https://github.com/MikeyS2002"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Github
+              </a>
             </motion.li>
             <motion.li
               initial="hidden"
@@ -87,7 +93,13 @@ export default function Footer() {
               }}
               className="cursor-pointer"
             >
-              <a>LinkedIn</a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.linkedin.com/in/mike-schaper-906748212/"
+              >
+                LinkedIn
+              </a>
             </motion.li>
           </ul>
         </div>
@@ -157,9 +169,9 @@ export default function Footer() {
           </li>
           <li className="cursor-pointer">
             <a
-              href="https://www.linkedin.com/in/mike-schaper-906748212/"
               target="_blank"
               rel="noreferrer"
+              href="https://www.linkedin.com/in/mike-schaper-906748212/"
             >
               LinkedIn
             </a>
