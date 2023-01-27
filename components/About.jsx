@@ -208,16 +208,16 @@ const About = () => {
             {about === "aboutMe" && (
               <>
                 <p className="md:max-w-[80%]">
-                  Hey there, my name is Mike and I'm just your average software
-                  engineering student at Amsterdam University of Applied
-                  Sciences. But don't let the textbooks fool you, I'm not just a
-                  nerd - I'm a web development nerd with a passion for all
-                  things front-end. In fact, I'm so good with JavaScript that
-                  I've earned the title of 'JavaScript Ninja' (or at least
-                  that's what my dad calls me). I'm basically a black belt in
-                  code and a master of modern frameworks...or at least that's
-                  what I tell myself while I'm coding at 3am on a Sunday
-                  morning.
+                  Hey there, my name is Mike and I&apos;m just your average
+                  software engineering student at Amsterdam University of
+                  Applied Sciences. But don&apos;t let the textbooks fool you,
+                  I&apos;m not just a nerd - I&apos;m a web development nerd
+                  with a passion for all things front-end. In fact, I&apos;m so
+                  good with JavaScript that I&apos;ve earned the title of
+                  &apos;JavaScript Ninja&apos; (or at least that&apos;s what my
+                  dad calls me). I&apos;m basically a black belt in code and a
+                  master of modern frameworks...or at least that&apos;s what I
+                  tell myself while I&apos;m coding at 3am on a Sunday morning.
                 </p>
                 <motion.div
                   style={{ y: y1 }}
