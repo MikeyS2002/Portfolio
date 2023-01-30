@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, StrictMode } from "react";
 import Head from "next/head";
 import {
   ApolloClient,
@@ -52,23 +52,25 @@ export default function Home({ loading, contributions, project }) {
   }, []);
 
   return (
-    <div className="relative">
-      <Head>
-        <title>Mike | Software engineer</title>
-        <meta
-          name="description"
-          content="Hi, my name is Mike, I am currently studing software engineering on Amsterdam University of Applied Science. I have a passion for webdevelopment, and love to work with modern frontend frameworks. My nickname is therefore 'Javascript ninja', atleast thats how i call myself."
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      {loading && <Loading />}
-      <>
-        <Navbar />
-        <Header loading={loading} />
-        <Work projects={project} />
-        <About />
-      </>
-    </div>
+    <StrictMode>
+      <div className="relative">
+        <Head>
+          <title>Mike | Software engineer</title>
+          <meta
+            name="description"
+            content="Hi, my name is Mike, I am currently studing software engineering on Amsterdam University of Applied Science. I have a passion for webdevelopment, and love to work with modern frontend frameworks. My nickname is therefore 'Javascript ninja', atleast thats how i call myself."
+          />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        {loading && <Loading />}
+        <>
+          <Navbar />
+          <Header loading={loading} />
+          <Work projects={project} />
+          <About />
+        </>
+      </div>
+    </StrictMode>
   );
 }
 

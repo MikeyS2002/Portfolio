@@ -207,7 +207,7 @@ const About = () => {
           <div className="relative w-full col-span-2 my-auto sm:min-h-0 min-h-[270px] ">
             {about === "aboutMe" && (
               <>
-                <p className="md:max-w-[80%]">
+                <p>
                   Hey there, my name is Mike and I&apos;m just your average
                   software engineering student at Amsterdam University of
                   Applied Sciences. But don&apos;t let the textbooks fool you,
@@ -221,7 +221,7 @@ const About = () => {
                 </p>
                 <motion.div
                   style={{ y: y1 }}
-                  className="absolute top-0 -right-[25%] w-[150px] h-[200px] -z-10 hidden md:block"
+                  className="absolute top-0 right-0 w-[150px] h-[200px] -z-10 hidden md:block"
                 >
                   <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
                   <div className="relative z-0 w-full h-full rounded oveflow-hidden ">
@@ -253,7 +253,7 @@ const About = () => {
                 </motion.div>
                 <motion.div
                   style={{ y: y4 }}
-                  className="absolute -bottom-[90px] right-[15%] -z-10 w-[150px] h-[150px] hidden md:block"
+                  className="absolute -bottom-[90px] right-[25%] -z-10 w-[150px] h-[150px] hidden md:block"
                 >
                   <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
                   <div className="relative z-0 w-full h-full rounded oveflow-hidden ">
