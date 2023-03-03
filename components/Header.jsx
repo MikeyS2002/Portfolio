@@ -65,9 +65,34 @@ export default function Header({ loading }) {
           </motion.p>
         </motion.div>
       </div>
-      <Canvas>
-        <Experience loading={loading} />
-      </Canvas>
+      <motion.div
+        animate={loading ? "closed" : "open"}
+        variants={opacityVariants}
+        className="absolute top-0 left-0 z-0 hidden w-full h-full pointer-events-none md:block"
+      >
+        <Image
+          priority
+          src="/images/wormhole.svg"
+          alt=""
+          layout="fill"
+          objectFit="cover"
+          objectPosition="left bottom"
+        />
+      </motion.div>
+      <motion.div
+        animate={loading ? "closed" : "open"}
+        variants={opacityVariants}
+        className="absolute top-0 left-0 z-0 block w-full h-full pointer-events-none md:hidden"
+      >
+        <Image
+          priority
+          src="/images/wormhole.svg"
+          alt=""
+          layout="fill"
+          objectFit="cover"
+          objectPosition="left -100px bottom 0"
+        />
+      </motion.div>
     </header>
   );
 }

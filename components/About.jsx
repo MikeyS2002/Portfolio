@@ -22,6 +22,10 @@ const pathVariants = {
   },
 };
 
+const aboutImgs = ["mikeschaper.jpg", "callie.png", "lift.JPG", "callie2.jpg"];
+const expImgs = ["flatline.jpg"];
+const eduImgs = ["hva.jpeg", "horizon.jpeg"];
+
 const About = () => {
   const { ref, inView } = useInView({
     threshold: 1,
@@ -29,20 +33,17 @@ const About = () => {
   const { scrollYProgress } = useViewportScroll();
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, -80]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
-  const y4 = useTransform(scrollYProgress, [0, 1], [0, -130]);
 
   const [about, setAbout] = useState("aboutMe");
   const [activeAbout, setActiveAbout] = useState(1);
+
+  //skills
   const [topPos, setTopPos] = useState([]);
   const [leftPos, setLeftPos] = useState([]);
   const [topOffs, setTopOffs] = useState([]);
   const [leftOffs, setLeftOffs] = useState([]);
   const [rightOffs, setRightOffs] = useState([]);
   const [bottomOffs, setBottomOffs] = useState([]);
-
-  const lineRefs = useRef([]);
-  const parentRef = useRef();
 
   const top = [];
   const left = [];
@@ -51,6 +52,63 @@ const About = () => {
   const offRight = [];
   const offBottom = [];
 
+  //About
+  const [aboutTopPos, setAboutTopPos] = useState([]);
+  const [aboutLeftPos, setAboutLeftPos] = useState([]);
+  const [aboutTopOffs, setAboutTopOffs] = useState([]);
+  const [aboutLeftOffs, setAboutLeftOffs] = useState([]);
+  const [aboutRightOffs, setAboutRightOffs] = useState([]);
+  const [aboutBottomOffs, setAboutBottomOffs] = useState([]);
+
+  const aboutTop = [];
+  const aboutLeft = [];
+  const aboutOffTop = [];
+  const aboutOffLeft = [];
+  const aboutOffRight = [];
+  const aboutOffBottom = [];
+
+  //Experience
+  const [expTopPos, setExpTopPos] = useState([]);
+  const [expLeftPos, setExpLeftPos] = useState([]);
+  const [expTopOffs, setExpTopOffs] = useState([]);
+  const [expLeftOffs, setExpLeftOffs] = useState([]);
+  const [expRightOffs, setExpRightOffs] = useState([]);
+  const [expBottomOffs, setExpBottomOffs] = useState([]);
+
+  const expTop = [];
+  const expLeft = [];
+  const expOffTop = [];
+  const expOffLeft = [];
+  const expOffRight = [];
+  const expOffBottom = [];
+
+  //Education
+  const [eduTopPos, setEduTopPos] = useState([]);
+  const [eduLeftPos, setEduLeftPos] = useState([]);
+  const [eduTopOffs, setEduTopOffs] = useState([]);
+  const [eduLeftOffs, setEduLeftOffs] = useState([]);
+  const [eduRightOffs, setEduRightOffs] = useState([]);
+  const [eduBottomOffs, setEduBottomOffs] = useState([]);
+
+  const eduTop = [];
+  const eduLeft = [];
+  const eduOffTop = [];
+  const eduOffLeft = [];
+  const eduOffRight = [];
+  const eduOffBottom = [];
+
+  //refs
+  const aboutRefs = useRef([]);
+  const expRefs = useRef([]);
+  const eduRefs = useRef([]);
+  const lineRefs = useRef([]);
+
+  const aboutParentRef = useRef();
+  const expParentRef = useRef();
+  const eduParentRef = useRef();
+  const parentRef = useRef();
+
+  //Set random top an left
   useEffect(() => {
     for (var i = 0; i < skillsData.length; i++) {
       top.push(Math.floor(Math.random() * (90 - 1 + 1) + 1));
@@ -58,22 +116,56 @@ const About = () => {
     }
     setTopPos(top);
     setLeftPos(left);
+
+    //About me images
+    for (var i = 0; i < aboutImgs.length; i++) {
+      aboutLeft.push(Math.floor(Math.random() * 86));
+      aboutTop.push(Math.floor(Math.random() * 40));
+    }
+    setAboutTopPos(aboutTop);
+    setAboutLeftPos(aboutLeft);
+
+    //Experience images
+    for (var i = 0; i < expImgs.length; i++) {
+      expTop.push(Math.floor(Math.random() * 32));
+      expLeft.push(Math.floor(Math.random() * 70));
+    }
+    setExpTopPos(expTop);
+    setExpLeftPos(expLeft);
+
+    //Education images
+    for (var i = 0; i < eduImgs.length; i++) {
+      eduTop.push(Math.floor(Math.random() * 32));
+      eduLeft.push(Math.floor(Math.random() * 70));
+    }
+    setEduTopPos(eduTop);
+    setEduLeftPos(eduLeft);
   }, []);
 
+  //Set refs
   useEffect(() => {
     lineRefs.current = skillsData.map(
       (_, i) => lineRefs.current[i] ?? createRef()
     );
+
+    aboutRefs.current = aboutImgs.map(
+      (_, i) => aboutRefs.current[i] ?? createRef()
+    );
+
+    expRefs.current = expImgs.map((_, i) => expRefs.current[i] ?? createRef());
+
+    eduRefs.current = eduImgs.map((_, i) => eduRefs.current[i] ?? createRef());
   }, []);
 
+  //Calculate offset for drag constraints
   useEffect(() => {
     if (about === "skills") {
       const parentWidth = parentRef.current.clientWidth;
       const parentHeight = parentRef.current.clientHeight;
+
       for (var i = 0; i < skillsData.length; i++) {
         offTop.push(lineRefs.current[i].current.offsetTop);
         offLeft.push(lineRefs.current[i].current.offsetLeft);
-        //console.log(parentWidth);
         offRight.push(
           parentWidth - (lineRefs.current[i].current.clientWidth + offLeft[i])
         );
@@ -86,8 +178,96 @@ const About = () => {
       setRightOffs(offRight);
       setBottomOffs(offBottom);
     }
+
+    if (about === "aboutMe") {
+      const parentWidth = aboutParentRef.current.clientWidth;
+      const parentHeight = aboutParentRef.current.clientHeight;
+      for (var i = 0; i < aboutImgs.length; i++) {
+        if (aboutRefs.current[i].current) {
+          aboutOffTop.push(aboutRefs.current[i].current.offsetTop);
+          aboutOffLeft.push(aboutRefs.current[i].current.offsetLeft);
+
+          aboutOffRight.push(
+            parentWidth -
+              (aboutRefs.current[i].current.clientWidth + aboutOffLeft[i])
+          );
+          aboutOffBottom.push(
+            parentHeight -
+              (aboutRefs.current[i].current.clientHeight + aboutOffTop[i])
+          );
+          console.log(aboutOffBottom);
+        } else {
+          return;
+        }
+      }
+      if (aboutImgs.length > 0) {
+        setAboutTopOffs(aboutOffTop);
+        setAboutLeftOffs(aboutOffLeft);
+        setAboutRightOffs(aboutOffRight);
+        setAboutBottomOffs(aboutOffBottom);
+      }
+    }
+
+    if (about === "experience") {
+      const parentWidth = expParentRef.current.clientWidth;
+      const parentHeight = expParentRef.current.clientHeight;
+      for (var i = 0; i < expImgs.length; i++) {
+        if (expRefs.current[i].current) {
+          expOffTop.push(expRefs.current[i].current.offsetTop);
+          expOffLeft.push(expRefs.current[i].current.offsetLeft);
+
+          expOffRight.push(
+            parentWidth -
+              (expRefs.current[i].current.clientWidth + expOffLeft[i])
+          );
+          expOffBottom.push(
+            parentHeight -
+              (expRefs.current[i].current.clientHeight + expOffTop[i])
+          );
+          console.log(expOffBottom);
+        } else {
+          return;
+        }
+      }
+      if (expImgs.length > 0) {
+        setExpTopOffs(expOffTop);
+        setExpLeftOffs(expOffLeft);
+        setExpRightOffs(expOffRight);
+        setExpBottomOffs(expOffBottom);
+      }
+    }
+
+    if (about === "education") {
+      const parentWidth = eduParentRef.current.clientWidth;
+      const parentHeight = eduParentRef.current.clientHeight;
+      for (var i = 0; i < eduImgs.length; i++) {
+        if (eduRefs.current[i].current) {
+          eduOffTop.push(eduRefs.current[i].current.offsetTop);
+          eduOffLeft.push(eduRefs.current[i].current.offsetLeft);
+
+          eduOffRight.push(
+            parentWidth -
+              (eduRefs.current[i].current.clientWidth + eduOffLeft[i])
+          );
+          eduOffBottom.push(
+            parentHeight -
+              (eduRefs.current[i].current.clientHeight + eduOffTop[i])
+          );
+          console.log(eduOffBottom);
+        } else {
+          return;
+        }
+      }
+      if (eduImgs.length > 0) {
+        setEduTopOffs(eduOffTop);
+        setEduLeftOffs(eduOffLeft);
+        setEduRightOffs(eduOffRight);
+        setEduBottomOffs(eduOffBottom);
+      }
+    }
   }, [about]);
 
+  //Active tab
   useEffect(() => {
     switch (activeAbout) {
       case 1:
@@ -204,10 +384,13 @@ const About = () => {
             </p>
           </div>
           <div className="w-px md:block hidden bg-[#A5A5A5] h-[232px]"></div>
-          <div className="relative w-full col-span-2 my-auto sm:min-h-0 min-h-[270px] ">
+          <div className="relative w-full col-span-2 my-auto sm:min-h-0 h-[270px] ">
             {about === "aboutMe" && (
-              <>
-                <p>
+              <div
+                ref={aboutParentRef}
+                className="h-[232px] gap-10 relative rounded flex items-center"
+              >
+                <p className="z-20 p-5 pointer-events-none select-none">
                   Hey there, my name is Mike and I&apos;m just your average
                   software engineering student at Amsterdam University of
                   Applied Sciences. But don&apos;t let the textbooks fool you,
@@ -219,77 +402,47 @@ const About = () => {
                   master of modern frameworks...or at least that&apos;s what I
                   tell myself while I&apos;m coding at 3am on a Sunday morning.
                 </p>
-                <motion.div
-                  style={{ y: y1 }}
-                  className="absolute top-0 right-0 w-[150px] h-[200px] -z-10 hidden md:block"
-                >
-                  <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
-                  <div className="relative z-0 w-full h-full rounded oveflow-hidden ">
-                    <Image
-                      src="/images/mikeschaper.jpg"
-                      alt=""
-                      layout="fill"
-                      objectFit="cover"
-                      placeholder="blur"
-                      blurDataURL="/images/mikeschaper.jpg"
-                    />
-                  </div>
-                </motion.div>
-                <motion.div
-                  style={{ y: y2 }}
-                  className="absolute -bottom-[120px] right-[60%] -z-10  w-[180px] h-[130px] hidden md:block"
-                >
-                  <div className="absolute z-10 w-full h-full bg-black opacity-60"></div>
-                  <div className="relative z-0 w-full h-full rounded oveflow-hidden">
-                    <Image
-                      src="/images/callie.png"
-                      alt=""
-                      layout="fill"
-                      objectFit="cover"
-                      placeholder="blur"
-                      blurDataURL="/images/callie.png"
-                    />
-                  </div>
-                </motion.div>
-                <motion.div
-                  style={{ y: y4 }}
-                  className="absolute -bottom-[90px] right-[25%] -z-10 w-[150px] h-[150px] hidden md:block"
-                >
-                  <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
-                  <div className="relative z-0 w-full h-full rounded oveflow-hidden ">
-                    <Image
-                      src="/images/lift.JPG"
-                      alt=""
-                      layout="fill"
-                      objectFit="cover"
-                      className="z-10"
-                      placeholder="blur"
-                      blurDataURL="/images/lift.JPG"
-                    />
-                  </div>
-                </motion.div>
-                <motion.div
-                  style={{ y: y3 }}
-                  className="absolute -bottom-[80px] right-[55%] -z-10 w-[100px] h-[160px] hidden md:block"
-                >
-                  <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
-                  <div className="relative z-0 w-full h-full rounded oveflow-hidden ">
-                    <Image
-                      src="/images/callie2.jpg"
-                      alt=""
-                      layout="fill"
-                      objectFit="cover"
-                      className="z-10"
-                      placeholder="blur"
-                      blurDataURL="/images/callie2.jpg"
-                    />
-                  </div>
-                </motion.div>
-              </>
+                {aboutImgs.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    ref={aboutRefs.current[i]}
+                    style={{
+                      top: `${aboutTopPos[i]}%`,
+                      left: `${aboutLeftPos[i]}%`,
+                    }}
+                    drag
+                    dragElastic={0.05}
+                    whileDrag={{ cursor: "grabbing" }}
+                    dragConstraints={{
+                      left: aboutLeftOffs ? -aboutLeftOffs[i] : 0,
+                      top: aboutTopOffs ? -aboutTopOffs[i] : 0,
+                      right: aboutRightOffs ? aboutRightOffs[i] : 0,
+                      bottom: aboutBottomOffs ? aboutBottomOffs[i] : 0,
+                    }}
+                    className="absolute w-[100px] h-[140px] z-10 hidden md:block cursor-grab"
+                  >
+                    <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
+                    <div className="relative z-0 w-full h-full">
+                      <Image
+                        src={`/images/${item}`}
+                        alt=""
+                        layout="fill"
+                        objectFit="cover"
+                        placeholder="blur"
+                        blurDataURL={`/images/${item}`}
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             )}
+
             {about === "experience" && (
-              <>
-                <div className="border-b border-[#A5A5A5] flex justify-between pb-2">
+              <div
+                ref={expParentRef}
+                className="h-[270px] flex flex-col justify-center"
+              >
+                <div className="border-b border-[#A5A5A5] flex justify-between pb-2 z-30 pointer-events-none select-none">
                   <div>
                     <h3>
                       <a
@@ -304,86 +457,103 @@ const About = () => {
                   </div>
                   <div>05.2022 / Now</div>
                 </div>
-                <motion.div
-                  style={{ y: y1 }}
-                  className="absolute hidden md:block -bottom-[100px] right-[45%] -z-10  w-[230px] h-[140px]"
-                >
-                  <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
-                  <div className="relative z-0 w-full h-full rounded oveflow-hidden">
-                    <Image
-                      src="/images/flatline.jpg"
-                      alt=""
-                      layout="fill"
-                      objectFit="cover"
-                      placeholder="blur"
-                      blurDataURL="/images/flatline.jpg"
-                    />
-                  </div>
-                </motion.div>
-              </>
+                {expImgs.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    ref={expRefs.current[i]}
+                    style={{
+                      top: `${expTopPos[i]}%`,
+                      left: `${expLeftPos[i]}%`,
+                    }}
+                    drag
+                    dragElastic={0.05}
+                    whileDrag={{ cursor: "grabbing" }}
+                    dragConstraints={{
+                      left: -expLeftOffs[i],
+                      top: -expTopOffs[i],
+                      right: expRightOffs[i],
+                      bottom: expBottomOffs[i],
+                    }}
+                    className="absolute w-[230px] h-[140px] z-10 hidden md:block cursor-grab"
+                  >
+                    <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
+                    <div className="relative z-0 w-full h-full">
+                      <Image
+                        src={`/images/${item}`}
+                        alt=""
+                        layout="fill"
+                        objectFit="cover"
+                        placeholder="blur"
+                        blurDataURL={`/images/${item}`}
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             )}
             {about === "education" && (
-              <>
-                <div className="border-b border-[#A5A5A5] flex justify-between pb-2 mb-4">
+              <div
+                ref={eduParentRef}
+                className="h-[270px] flex flex-col justify-center"
+              >
+                <div className="border-b z-30 border-[#A5A5A5] flex justify-between pointer-events-none select-none pb-2 mb-4">
                   <div>
                     <h3>Software engineering</h3>
                     <h4>Amsterdam University of Applied Science</h4>
                   </div>
                   <div>09.2022 / Now</div>
                 </div>
-                <div className="border-b border-[#A5A5A5] flex justify-between pb-2 mb-4">
+                <div className="border-b border-[#A5A5A5] flex justify-between pointer-events-none select-none pb-2 z-30 mb-4">
                   <div>
                     <h3>Software developer</h3>
                     <h4>ROC Horizon College</h4>
                   </div>
                   <div>08.2019 / 05.2022 </div>
                 </div>
-                <div className="border-b border-[#A5A5A5] flex justify-between pb-2">
+                <div className="border-b border-[#A5A5A5] flex justify-between pointer-events-none select-none z-30 pb-2">
                   <div>
                     <h3>IT and media management</h3>
                     <h4>ROC Horizon College</h4>
                   </div>
                   <div>08.2018 / 05.2019</div>
                 </div>
-                <motion.div
-                  style={{ y: y2 }}
-                  className="absolute top-[30px] hidden md:block right-[10%] -z-10  w-[200px] h-[110px]"
-                >
-                  <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
-                  <div className="relative z-0 w-full h-full rounded oveflow-hidden">
-                    <Image
-                      src="/images/hva.jpeg"
-                      alt=""
-                      layout="fill"
-                      objectFit="cover"
-                      placeholder="blur"
-                      blurDataURL="/images/hva.jpeg"
-                    />
-                  </div>
-                </motion.div>
-                <motion.div
-                  style={{ y: y1 }}
-                  className="absolute -bottom-[80px] hidden md:block left-[35%] -z-10  w-[230px] h-[140px]"
-                >
-                  <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
-                  <div className="relative z-0 w-full h-full rounded oveflow-hidden">
-                    <Image
-                      src="/images/horizon.jpeg"
-                      alt=""
-                      layout="fill"
-                      objectFit="cover"
-                      placeholder="blur"
-                      blurDataURL="/images/hva.jpeg"
-                    />
-                  </div>
-                </motion.div>
-              </>
+                {eduImgs.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    ref={eduRefs.current[i]}
+                    style={{
+                      top: `${eduTopPos[i]}%`,
+                      left: `${eduLeftPos[i]}%`,
+                    }}
+                    drag
+                    dragElastic={0.05}
+                    whileDrag={{ cursor: "grabbing" }}
+                    dragConstraints={{
+                      left: -eduLeftOffs[i],
+                      top: -eduTopOffs[i],
+                      right: eduRightOffs[i],
+                      bottom: eduBottomOffs[i],
+                    }}
+                    className="absolute w-[200px] h-[110px] z-10 hidden md:block cursor-grab"
+                  >
+                    <div className="absolute z-10 w-full h-full bg-black opacity-40"></div>
+                    <div className="relative z-0 w-full h-full">
+                      <Image
+                        src={`/images/${item}`}
+                        alt=""
+                        layout="fill"
+                        objectFit="cover"
+                        placeholder="blur"
+                        blurDataURL={`/images/${item}`}
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             )}
             {about === "skills" && (
               <>
-                <motion.div
-                  animate={{ opacity: 1 }}
-                  inital={{ opacity: 0 }}
+                <div
                   ref={parentRef}
                   className={`h-[232px] gap-10 bg-[#181818] relative rounded `}
                 >
@@ -418,7 +588,7 @@ const About = () => {
                       <p>{skill.title}</p>
                     </motion.div>
                   ))}
-                </motion.div>
+                </div>
                 <p className="absolute right-0  -bottom-6 text-[12px]  flex justify-center items-center gap-2">
                   <AiOutlineArrowUp className="animate-bounce" /> Drag &amp;
                   play around
