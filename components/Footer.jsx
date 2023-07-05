@@ -59,7 +59,7 @@ export default function Footer() {
               <p>CEST {clock}</p>
             </li>
             <li>
-              <p>+31 624 4312 74</p>
+              <p>+31 624 4312 75</p>
             </li>
           </ul>
           <ul className="hidden gap-5 overflow-hidden md:flex">

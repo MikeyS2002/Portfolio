@@ -64,7 +64,7 @@ const Work = ({ projects }) => {
                   >
                     0{slide.index} / {slide.title}
                   </p>
-                  <div className="absolute z-30 flex gap-5 transition-opacity duration-300 opacity-0 bottom-5 left-5 group-hover:opacity-100">
+                  <div className="absolute z-30 flex gap-5 transition-opacity duration-300 opacity-0 bottom-5 left-5 md:group-hover:opacity-100">
                     {slide.skills.map((skill, i) => (
                       <div className="flex items-center gap-1" key={i}>
                         <div
